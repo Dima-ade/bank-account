@@ -19,15 +19,15 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.*;
 
-public class JsonRepository {
+public abstract class AbstractService {
 
-    private File file;
-    private AccountsJsonData accountsJsonData;
-    private final ObjectMapper objectMapper;
-    private InterestManagerProcessor interestManagerProcessor;
-    private AmountManagerProcessor amountsProcessor;
+    protected File file;
+    protected AccountsJsonData accountsJsonData;
+    protected final ObjectMapper objectMapper;
+    protected InterestManagerProcessor interestManagerProcessor;
+    protected AmountManagerProcessor amountsProcessor;
 
-    public JsonRepository(File file) {
+    protected AbstractService(File file) {
         this.file = file;
         this.objectMapper = new ObjectMapper();
         // support Java 8 date time apis
@@ -36,20 +36,7 @@ public class JsonRepository {
         objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
     }
 
-    private void readAccounts() throws IOException {
-        if (this.accountsJsonData == null) {
-            if (file.exists()) {
-                this.accountsJsonData = this.objectMapper.readValue(this.file, AccountsJsonData.class);
-            } else {
-                this.accountsJsonData = new AccountsJsonData();
-                this.accountsJsonData.setAccounts(new ArrayList<>());
-                this.accountsJsonData.setAmounts(new ArrayList<>());
-                this.accountsJsonData.setInterests(new ArrayList<>());
-            }
-            this.interestManagerProcessor = new InterestManagerProcessor(this.accountsJsonData.getInterests());
-            this.amountsProcessor = new AmountManagerProcessor(this.accountsJsonData.getAmounts());
-        }
-    }
+    protected abstract void readAccounts() throws IOException;
 
     public AccountsJsonData getAccountsJsonData() {
         return accountsJsonData;
@@ -76,9 +63,7 @@ public class JsonRepository {
             }
     }
 
-    private void writeAccounts() throws IOException {
-        objectMapper.writeValue(this.file, this.accountsJsonData);
-    }
+    protected abstract void writeAccounts() throws IOException;
 
     private void createHistory(double amount, Integer accountNumber, LocalDate operationDateFormatted, OperationType operationType, double currentBalance) {
         if (accountNumber == null) {

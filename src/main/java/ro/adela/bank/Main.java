@@ -9,7 +9,8 @@ import ro.adela.bank.interfaces.AmountAccount;
 import ro.adela.bank.processor.AmountManagerProcessor;
 import ro.adela.bank.processor.InterestManagerProcessor;
 import ro.adela.bank.readobject.*;
-import ro.adela.bank.repository.JsonRepository;
+import ro.adela.bank.repository.AbstractService;
+import ro.adela.bank.repository.JsonService;
 import ro.adela.bank.utils.CsvFileWriter;
 
 import java.io.BufferedReader;
@@ -23,13 +24,13 @@ import java.util.Scanner;
 
 public class Main {
 
-    private JsonRepository repository;
+    private AbstractService repository;
 
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     private void run() throws IOException, JsonProviderException {
         File file  = new File("account.json");
-        this.repository = new JsonRepository(file);
+        this.repository = new JsonService(file);
 
         // Java 17 multiline string
         String inputMessage = """
