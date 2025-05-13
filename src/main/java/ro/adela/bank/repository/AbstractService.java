@@ -1,12 +1,7 @@
 package ro.adela.bank.repository;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import ro.adela.bank.dto.AmountHistoryDto;
-import ro.adela.bank.dto.InterestRateDto;
-import ro.adela.bank.dto.OutputSummaryAmountDto;
-import ro.adela.bank.dto.SavingsAccountDto;
+import jakarta.xml.bind.JAXBException;
+import ro.adela.bank.dto.*;
 import ro.adela.bank.enums.OperationType;
 import ro.adela.bank.exceptions.JsonProviderException;
 import ro.adela.bank.interfaces.AmountAccount;
@@ -22,39 +17,48 @@ import java.util.*;
 public abstract class AbstractService {
 
     protected File file;
-    protected AccountsJsonData accountsJsonData;
-    protected final ObjectMapper objectMapper;
+    protected BankDataDto bankDataDto;
     protected InterestManagerProcessor interestManagerProcessor;
     protected AmountManagerProcessor amountsProcessor;
 
     protected AbstractService(File file) {
         this.file = file;
-        this.objectMapper = new ObjectMapper();
-        // support Java 8 date time apis
-        this.objectMapper.registerModule(new JavaTimeModule());
-        //configure Object mapper for pretty print
-        objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
     }
 
-    protected abstract void readAccounts() throws IOException;
+    protected abstract void processBankData() throws IOException, JAXBException;
 
-    public AccountsJsonData getAccountsJsonData() {
-        return accountsJsonData;
+    public void readAccounts() throws IOException, JAXBException {
+        if (this.bankDataDto == null) {
+            if (file.exists()) {
+                processBankData();
+            } else {
+                this.bankDataDto = new BankDataDto();
+                this.bankDataDto.setAccounts(new ArrayList<>());
+                this.bankDataDto.setAmounts(new ArrayList<>());
+                this.bankDataDto.setInterests(new ArrayList<>());
+            }
+            this.interestManagerProcessor = new InterestManagerProcessor(this.bankDataDto.getInterests());
+            this.amountsProcessor = new AmountManagerProcessor(this.bankDataDto.getAmounts());
+        }
     }
 
-    public void addAccount(SavingsAccountDto savingsAccount) throws IOException, JsonProviderException {
+    public BankDataDto getBankData() {
+        return bankDataDto;
+    }
+
+    public void addAccount(BankAccountDto savingsAccount) throws IOException, JsonProviderException, JAXBException {
             if (savingsAccount == null) {
                 throw new IllegalArgumentException("The savingsAccount is null");
             }
             readAccounts();
             boolean exists = false;
-            for (SavingsAccountDto account : this.accountsJsonData.getAccounts()) {
+            for (BankAccountDto account : this.bankDataDto.getAccounts()) {
                 if (account.getAccountNumber().equals(savingsAccount.getAccountNumber())) {
                     exists = true;
                 }
             }
             if (!exists) {
-                this.accountsJsonData.getAccounts().add(savingsAccount);
+                this.bankDataDto.getAccounts().add(savingsAccount);
                 // write JSON to a File
                 writeAccounts();
                 System.out.println("File saved to: " + file.getAbsolutePath());
@@ -63,7 +67,7 @@ public abstract class AbstractService {
             }
     }
 
-    protected abstract void writeAccounts() throws IOException;
+    protected abstract void writeAccounts() throws IOException, JAXBException;
 
     private void createHistory(double amount, Integer accountNumber, LocalDate operationDateFormatted, OperationType operationType, double currentBalance) {
         if (accountNumber == null) {
@@ -81,10 +85,10 @@ public abstract class AbstractService {
         amountHistory.setDate(operationDateFormatted);
         amountHistory.setOperationType(operationType);
         amountHistory.setCurrentBalance(currentBalance);
-        this.accountsJsonData.getAmounts().add(amountHistory);
+        this.bankDataDto.getAmounts().add(amountHistory);
     }
 
-    public AmountAccount addAmount(Integer accountNumber, double amount, LocalDate operationDateFormatted) throws IOException {
+    public AmountAccount addAmount(Integer accountNumber, double amount, LocalDate operationDateFormatted) throws IOException, JAXBException {
         if (accountNumber == null) {
             throw new IllegalArgumentException("The accountNumber is null");
         }
@@ -92,8 +96,8 @@ public abstract class AbstractService {
             throw new IllegalArgumentException("The operationDateFormatted is null");
         }
         readAccounts();
-        if (this.accountsJsonData.getAccounts().size() > 0) {
-            for (SavingsAccountDto account : this.accountsJsonData.getAccounts()) {
+        if (this.bankDataDto.getAccounts().size() > 0) {
+            for (BankAccountDto account : this.bankDataDto.getAccounts()) {
                 if (account.getAccountNumber().equals(accountNumber)) {
                     SavingsAccountProcessor savingsAccountProcessor = new SavingsAccountProcessor(account);
                     savingsAccountProcessor.deposit(amount);
@@ -109,7 +113,7 @@ public abstract class AbstractService {
         return null;
     }
 
-    public AmountAccount removeAmount(Integer accountNumber, double amount, LocalDate operationDateFormatted) throws IOException {
+    public AmountAccount removeAmount(Integer accountNumber, double amount, LocalDate operationDateFormatted) throws IOException, JAXBException {
         if (accountNumber == null) {
             throw new IllegalArgumentException("The accountNumber is null");
         }
@@ -117,8 +121,8 @@ public abstract class AbstractService {
             throw new IllegalArgumentException("The operationDateFormatted is null");
         }
         readAccounts();
-        if (this.accountsJsonData.getAccounts().size() > 0) {
-            for (SavingsAccountDto account : this.accountsJsonData.getAccounts()) {
+        if (this.bankDataDto.getAccounts().size() > 0) {
+            for (BankAccountDto account : this.bankDataDto.getAccounts()) {
                 if (account.getAccountNumber().equals(accountNumber)) {
                     SavingsAccountProcessor savingsAccountProcessor = new SavingsAccountProcessor(account);
                     savingsAccountProcessor.withdraw(amount);
@@ -134,7 +138,7 @@ public abstract class AbstractService {
         return null;
     }
 
-    public Collection<OutputSummaryAmountDto> filterAmountsByMonths(Integer accountNumber, LocalDate startDateFormatted, LocalDate endDateFormatted) throws IOException {
+    public Collection<OutputSummaryAmountDto> filterAmountsByMonths(Integer accountNumber, LocalDate startDateFormatted, LocalDate endDateFormatted) throws IOException, JAXBException {
         if (accountNumber == null) {
             throw new IllegalArgumentException("The accountNumber is null");
         }
@@ -146,7 +150,7 @@ public abstract class AbstractService {
         }
         readAccounts();
         Map<String, OutputSummaryAmountDto> result = new HashMap<>();
-        for (AmountHistoryDto accountAmount : this.accountsJsonData.getAmounts()) {
+        for (AmountHistoryDto accountAmount : this.bankDataDto.getAmounts()) {
             if (accountNumber == null || accountNumber.equals(accountAmount.getAccountNumber())) {
                 LocalDate date = accountAmount.getDate();
                 if (date.compareTo(startDateFormatted) >= 0 && date.compareTo(endDateFormatted) <= 0) {
@@ -176,7 +180,7 @@ public abstract class AbstractService {
         return result.values();
     }
 
-    public Collection<OutputSummaryAmountDto> filterAmountsByWeeks(Integer accountNumber, LocalDate startDateFormatted, LocalDate endDateFormatted) throws IOException {
+    public Collection<OutputSummaryAmountDto> filterAmountsByWeeks(Integer accountNumber, LocalDate startDateFormatted, LocalDate endDateFormatted) throws IOException, JAXBException {
         if (accountNumber == null) {
             throw new IllegalArgumentException("The accountNumber is null");
         }
@@ -188,7 +192,7 @@ public abstract class AbstractService {
         }
         readAccounts();
         Map<String, OutputSummaryAmountDto> result = new HashMap<>();
-        for (AmountHistoryDto accountAmount : this.accountsJsonData.getAmounts()) {
+        for (AmountHistoryDto accountAmount : this.bankDataDto.getAmounts()) {
             if (accountNumber == null || accountNumber.equals(accountAmount.getAccountNumber())) {
                 LocalDate date = accountAmount.getDate();
                 if (date.compareTo(startDateFormatted) >= 0 && date.compareTo(endDateFormatted) <= 0) {
@@ -221,24 +225,24 @@ public abstract class AbstractService {
         return result.values();
     }
 
-    public void addInterestRate(InterestRateDto interestRate) throws IOException, JsonProviderException {
+    public void addInterestRate(InterestRateDto interestRate) throws IOException, JsonProviderException, JAXBException {
         if (interestRate == null) {
             throw new IllegalArgumentException("The interestRate is null");
         }
         readAccounts();
         boolean exists = false;
-        if (this.accountsJsonData.getInterests() == null) {
-            this.accountsJsonData.setInterests(new ArrayList<>());
+        if (this.bankDataDto.getInterests() == null) {
+            this.bankDataDto.setInterests(new ArrayList<>());
         }
-        if (this.accountsJsonData.getInterests().size() > 0) {
-            for (InterestRateDto interestDto : this.accountsJsonData.getInterests()) {
+        if (this.bankDataDto.getInterests().size() > 0) {
+            for (InterestRateDto interestDto : this.bankDataDto.getInterests()) {
                 if (interestDto.getActivationDate().compareTo(interestRate.getActivationDate()) == 0) {
                     exists = true;
                 }
             }
         }
         if (!exists) {
-            this.accountsJsonData.getInterests().add(interestRate);
+            this.bankDataDto.getInterests().add(interestRate);
             // write JSON to a File
             writeAccounts();
             System.out.println("File saved to: " + file.getAbsolutePath());
@@ -249,22 +253,22 @@ public abstract class AbstractService {
         }
     }
 
-    public InterestManagerProcessor getInterestManagerProcessor() throws IOException {
+    public InterestManagerProcessor getInterestManagerProcessor() throws IOException, JAXBException {
         readAccounts();
         return this.interestManagerProcessor;
     }
 
-    public AmountManagerProcessor getAmountsProcessor() throws IOException {
+    public AmountManagerProcessor getAmountsProcessor() throws IOException, JAXBException {
         readAccounts();
         return this.amountsProcessor;
     }
 
-    public AmountAccount getBalanceByAccount(Integer accountNumber) throws IOException, JsonProviderException {
+    public AmountAccount getBalanceByAccount(Integer accountNumber) throws IOException, JsonProviderException, JAXBException {
         if (accountNumber == null) {
             throw new IllegalArgumentException("The accountNumber is null");
         }
         readAccounts();
-        for (SavingsAccountDto account : this.accountsJsonData.getAccounts()) {
+        for (BankAccountDto account : this.bankDataDto.getAccounts()) {
             if (account.getAccountNumber().equals(accountNumber)) {
                 return account;
             }

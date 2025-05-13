@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bankDataDto>
+    <account>
+        <accountNumber>123</accountNumber>
+        <accountHolderName>aaa</accountHolderName>
+        <balance>0.0</balance>
+        <birtDate/>
+        <startDate/>
+    </account>
+    <account>
+        <accountNumber>456</accountNumber>
+        <accountHolderName>bbb</accountHolderName>
+        <balance>500.0</balance>
+        <birtDate/>
+        <startDate/>
+    </account>
+    <amount>
+        <accountNumber>456</accountNumber>
+        <operationType>DEPOSIT</operationType>
+        <date/>
+        <amount>500.0</amount>
+        <currentBalance>500.0</currentBalance>
+    </amount>
+    <interest>
+        <interestRate>5.0</interestRate>
+        <activationDate/>
+    </interest>
+    <interest>
+        <interestRate>7.0</interestRate>
+        <activationDate/>
+    </interest>
+</bankDataDto>

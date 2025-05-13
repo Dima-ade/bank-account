@@ -1,8 +1,9 @@
 package ro.adela.bank;
 
+import jakarta.xml.bind.JAXBException;
+import ro.adela.bank.dto.BankAccountDto;
 import ro.adela.bank.dto.InterestRateDto;
 import ro.adela.bank.dto.OutputSummaryAmountDto;
-import ro.adela.bank.dto.SavingsAccountDto;
 import ro.adela.bank.dto.TotalInterestByDayDto;
 import ro.adela.bank.exceptions.JsonProviderException;
 import ro.adela.bank.interfaces.AmountAccount;
@@ -11,6 +12,7 @@ import ro.adela.bank.processor.InterestManagerProcessor;
 import ro.adela.bank.readobject.*;
 import ro.adela.bank.repository.AbstractService;
 import ro.adela.bank.repository.JsonService;
+import ro.adela.bank.repository.XmlService;
 import ro.adela.bank.utils.CsvFileWriter;
 
 import java.io.BufferedReader;
@@ -28,10 +30,13 @@ public class Main {
 
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-    private void run() throws IOException, JsonProviderException {
+    private void run(String fileType) throws IOException, JsonProviderException, JAXBException {
         File file  = new File("account.json");
         this.repository = new JsonService(file);
-
+        if (fileType.equals("xml")) {
+            file = new File("account.xml");
+            this.repository = new XmlService(file);
+        }
         // Java 17 multiline string
         String inputMessage = """
                 Please enter number from 1 - 10 or write 'exit' to stop the program.
@@ -82,7 +87,7 @@ public class Main {
         System.out.println("The program exit! Goodbye!");
     }
 
-    private String createAccountOption() throws IOException, JsonProviderException {
+    private String createAccountOption() throws IOException, JsonProviderException, JAXBException {
         CreateAccountReadObject createAccountReadObject;
         do {
             System.out.println("Enter the details for create account!!!");
@@ -90,7 +95,7 @@ public class Main {
         }
         while (createAccountReadObject == null);
 
-        SavingsAccountDto accountDto = new SavingsAccountDto(createAccountReadObject.getAccountNumber(), createAccountReadObject.getAccountHolderName(), createAccountReadObject.getBirtDate(), createAccountReadObject.getStartDate());
+        BankAccountDto accountDto = new BankAccountDto(createAccountReadObject.getAccountNumber(), createAccountReadObject.getAccountHolderName(), createAccountReadObject.getBirtDate(), createAccountReadObject.getStartDate());
         System.out.println("Savings account balance: " + accountDto.getBalance()); // Check balance
 
         this.repository.addAccount(accountDto);
@@ -131,7 +136,7 @@ public class Main {
         return createAccountReadObject;
     }
 
-    private String addMoneyOption() throws IOException {
+    private String addMoneyOption() throws IOException, JAXBException {
        AddRemoveMoneyReadObject addMoneyReadObject;
         do {
             System.out.println("Enter the details for add money!!!");
@@ -176,7 +181,7 @@ public class Main {
         return addMoneyReadObject;
     }
 
-    private String removeMoneyOption() throws IOException {
+    private String removeMoneyOption() throws IOException, JAXBException {
         AddRemoveMoneyReadObject removeMoneyReadObject;
         do {
             System.out.println("Enter the details for remove money!!!");
@@ -194,7 +199,7 @@ public class Main {
         return "3";
     }
 
-    private String filterAmountsByMonthsOption() throws IOException {
+    private String filterAmountsByMonthsOption() throws IOException, JAXBException {
         FilterAmountsReadObject filterAmountsReadObject;
         do {
             System.out.println("Enter the details for filter amounts by months!!!");
@@ -232,7 +237,7 @@ public class Main {
         return filterAmountsReadObject;
     }
 
-    private String filterAmountsByMonthsAndAccountOption() throws IOException {
+    private String filterAmountsByMonthsAndAccountOption() throws IOException, JAXBException {
         FilterAmountsReadObject filterAmountsReadObject;
         do {
             System.out.println("Enter the details for filter amounts by months and account!!!");
@@ -274,7 +279,7 @@ public class Main {
         return filterAmountsReadObject;
     }
 
-    private String filterAmountsByWeeksOption() throws IOException {
+    private String filterAmountsByWeeksOption() throws IOException, JAXBException {
         FilterAmountsReadObject filterAmountsReadObject;
         do {
             System.out.println("Enter the details for filter amounts by weeks!!!");
@@ -288,7 +293,7 @@ public class Main {
         return "6";
     }
 
-    private String filterAmountsByWeeksAndAccountOption() throws IOException {
+    private String filterAmountsByWeeksAndAccountOption() throws IOException, JAXBException {
         FilterAmountsReadObject filterAmountsReadObject;
         do {
             System.out.println("Enter the details for filter amounts by weeks and account!!!");
@@ -302,7 +307,7 @@ public class Main {
         return "7";
     }
 
-    private String addInterestRateOption() throws IOException, JsonProviderException {
+    private String addInterestRateOption() throws IOException, JsonProviderException, JAXBException {
         AddInterestRateReadObject interestRateReadObject;
         do {
             System.out.println("Enter the details for adding interest rate!!!");
@@ -339,7 +344,7 @@ public class Main {
         return interestRateReadObject;
     }
 
-    private String getInterestRateByDateOption() throws IOException, JsonProviderException {
+    private String getInterestRateByDateOption() throws IOException, JsonProviderException, JAXBException {
         GetInterestRateByDateReadObject interestRateByDateReadObject;
         do {
             System.out.println("Enter the details for getting interest rate!!!");
@@ -370,7 +375,7 @@ public class Main {
         return interestRateByDateReadObject;
     }
 
-    private String getTotalInterestRateToDateOption() throws IOException, JsonProviderException {
+    private String getTotalInterestRateToDateOption() throws IOException, JsonProviderException, JAXBException {
         GetTotalInterestRateToDateReadObject getTotalInterestRateToDateReadObject;
         do {
             System.out.println("Enter the details for getting total interest rate for an account from creation till a date!!!");
@@ -421,7 +426,7 @@ public class Main {
 
         Main m = new Main();
         try {
-            m.run();
+            m.run(args[0]);
         } catch (Exception e) {
             e.printStackTrace();
         }

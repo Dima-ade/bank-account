@@ -1,27 +1,34 @@
 package ro.adela.bank.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import ro.adela.bank.interfaces.AmountAccount;
 
 import java.time.LocalDate;
 
+@XmlRootElement(name="account")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class BankAccountDto implements AmountAccount {
 
     // Attribute for account number
+    @XmlElement(name = "accountNumber")
     @JsonProperty("accountNumber")
     private Integer accountNumber;
-
     // Attribute for account holder's name
+    @XmlElement(name = "accountHolderName")
     @JsonProperty("accountHolderName")
     private String accountHolderName;
-
     // Attribute for account balance
+    @XmlElement(name = "balance")
     @JsonProperty("balance")
     private double balance;
-
+    @XmlElement(name = "birtDate")
     @JsonProperty("birtDate")
     private LocalDate birtDate;
-
+    @XmlElement(name = "startDate")
     @JsonProperty("startDate")
     private LocalDate startDate;
 

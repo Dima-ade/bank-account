@@ -1,16 +1,26 @@
 package ro.adela.bank.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.time.LocalDate;
 
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class TotalInterestByDayDto {
+    @XmlElement(name = "starDate")
     @JsonProperty("starDate")
     private LocalDate starDate;
+    @XmlElement(name = "endDate")
     @JsonProperty("endDate")
     private LocalDate endDate;
+    @XmlElement(name = "totalInterest")
     @JsonProperty("totalInterest")
     private double totalInterest;
+    @XmlElement(name = "accountNumber")
     @JsonProperty("accountNumber")
     private Integer accountNumber;
 

@@ -1,19 +1,30 @@
 package ro.adela.bank.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import ro.adela.bank.enums.OperationType;
 
 import java.time.LocalDate;
 
+@XmlRootElement(name="amount")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class AmountHistoryDto {
+    @XmlElement(name = "accountNumber")
     @JsonProperty("accountNumber")
     private Integer accountNumber;
+    @XmlElement(name = "operationType")
     @JsonProperty("operationType")
     private OperationType operationType;
+    @XmlElement(name = "date")
     @JsonProperty("date")
     private LocalDate date;
+    @XmlElement(name = "amount")
     @JsonProperty("amount")
     private double amount;
+    @XmlElement(name = "currentBalance")
     @JsonProperty("currentBalance")
     private double currentBalance;
 
