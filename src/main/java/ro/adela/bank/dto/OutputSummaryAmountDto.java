@@ -5,25 +5,37 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
+import lombok.*;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.LocalDate;
 
+@Entity
+@Data
+@ToString
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class OutputSummaryAmountDto {
 
+    @Column(name = "in")
     @XmlElement(name = "in")
     @JsonProperty("in")
     private double in;
+    @Column(name = "out")
     @XmlElement(name = "out")
     @JsonProperty("out")
     private double out;
+    @Column(name = "startDate")
     @XmlElement(name = "startDate")
     @JsonProperty("startDate")
     private final LocalDate startDate;
+    @Column(name = "endDate")
     @XmlElement(name = "endDate")
     @JsonProperty("endDate")
     private final LocalDate endDate;
+    @Id
     @XmlElement(name = "accountNumber")
     @JsonProperty("accountNumber")
     private final Integer accountNumber;

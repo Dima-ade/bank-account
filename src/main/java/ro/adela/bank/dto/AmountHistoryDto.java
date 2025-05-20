@@ -5,77 +5,43 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
+import lombok.*;
 import ro.adela.bank.enums.OperationType;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "amount_history")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@ToString
 @XmlRootElement(name="amount")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class AmountHistoryDto {
+    @Id
     @XmlElement(name = "accountNumber")
     @JsonProperty("accountNumber")
     private Integer accountNumber;
+    @Column(name = "operationType")
     @XmlElement(name = "operationType")
     @JsonProperty("operationType")
     private OperationType operationType;
+    @Column(name = "date")
     @XmlElement(name = "date")
     @JsonProperty("date")
     private LocalDate date;
+    @Column(name = "amount")
     @XmlElement(name = "amount")
     @JsonProperty("amount")
     private double amount;
+    @Column(name = "currentBalance")
     @XmlElement(name = "currentBalance")
     @JsonProperty("currentBalance")
     private double currentBalance;
-
-    public AmountHistoryDto() {
-    }
-
-    public AmountHistoryDto(Integer accountNumber, OperationType operationType, LocalDate date, double amount, double currentBalance) {
-        this.accountNumber = accountNumber;
-        this.operationType = operationType;
-        this.date = date;
-        this.amount = amount;
-        this.currentBalance = currentBalance;
-    }
-
-    public Integer getAccountNumber() {
-        return accountNumber;
-    }
-
-    public void setAccountNumber(Integer accountNumber) {
-        this.accountNumber = accountNumber;
-    }
-
-    public Enum<OperationType> getOperationType() {
-        return operationType;
-    }
-
-    public void setOperationType(OperationType operationType) {
-        this.operationType = operationType;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
-    public double getCurrentBalance() {
-        return currentBalance;
-    }
-
-    public void setCurrentBalance(double currentBalance) {
-        this.currentBalance = currentBalance;
-    }
 }

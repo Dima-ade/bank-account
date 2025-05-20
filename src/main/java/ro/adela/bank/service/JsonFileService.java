@@ -1,23 +1,19 @@
-package ro.adela.bank.repository;
+package ro.adela.bank.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import jakarta.xml.bind.JAXBException;
-import jakarta.xml.bind.Unmarshaller;
 import ro.adela.bank.dto.BankDataDto;
-import ro.adela.bank.processor.AmountManagerProcessor;
-import ro.adela.bank.processor.InterestManagerProcessor;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
-public class JsonService extends AbstractService{
+public class JsonFileService extends AbstractFileService {
 
     private final ObjectMapper objectMapper;
 
-    public JsonService(File file) {
+    public JsonFileService(File file) {
         super(file);
         this.objectMapper = new ObjectMapper();
         // support Java 8 date time apis

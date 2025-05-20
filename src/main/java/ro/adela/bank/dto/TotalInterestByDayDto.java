@@ -5,51 +5,36 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
+import lombok.*;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.LocalDate;
 
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@ToString
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class TotalInterestByDayDto {
+    @Column(name = "starDate")
     @XmlElement(name = "starDate")
     @JsonProperty("starDate")
     private LocalDate starDate;
+    @Column(name = "endDate")
     @XmlElement(name = "endDate")
     @JsonProperty("endDate")
     private LocalDate endDate;
+    @Column(name = "totalInterest")
     @XmlElement(name = "totalInterest")
     @JsonProperty("totalInterest")
     private double totalInterest;
+    @Id
     @XmlElement(name = "accountNumber")
     @JsonProperty("accountNumber")
     private Integer accountNumber;
-
-    public TotalInterestByDayDto() {
-    }
-
-    public TotalInterestByDayDto(LocalDate starDate, LocalDate endDate, Integer accountNumber) {
-        this.starDate = starDate;
-        this.endDate = endDate;
-        this.accountNumber = accountNumber;
-    }
-
-    public LocalDate getStarDate() {
-        return this.starDate;
-    }
-
-    public LocalDate getEndDate() {
-        return this.endDate;
-    }
-
-    public double getTotalInterest() {
-        return this.totalInterest;
-    }
-
-    public void setTotalInterest(double totalInterest) {
-        this.totalInterest = totalInterest;
-    }
-
-    public Integer getAccountNumber() {
-        return this.accountNumber;
-    }
 }

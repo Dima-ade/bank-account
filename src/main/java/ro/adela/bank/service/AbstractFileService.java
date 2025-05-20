@@ -1,10 +1,12 @@
-package ro.adela.bank.repository;
+package ro.adela.bank.service;
 
 import jakarta.xml.bind.JAXBException;
 import ro.adela.bank.dto.*;
 import ro.adela.bank.enums.OperationType;
 import ro.adela.bank.exceptions.JsonProviderException;
 import ro.adela.bank.interfaces.AmountAccount;
+import ro.adela.bank.interfaces.AmountManagerInterface;
+import ro.adela.bank.interfaces.InterestManagerInterface;
 import ro.adela.bank.processor.AmountManagerProcessor;
 import ro.adela.bank.processor.InterestManagerProcessor;
 import ro.adela.bank.processor.SavingsAccountProcessor;
@@ -14,15 +16,18 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.*;
 
-public abstract class AbstractService {
+public abstract class AbstractFileService extends AbstractService {
 
     protected File file;
     protected BankDataDto bankDataDto;
     protected InterestManagerProcessor interestManagerProcessor;
     protected AmountManagerProcessor amountsProcessor;
 
-    protected AbstractService(File file) {
+    protected AbstractFileService(File file) {
         this.file = file;
+    }
+
+    protected AbstractFileService() {
     }
 
     protected abstract void processBankData() throws IOException, JAXBException;
@@ -46,7 +51,8 @@ public abstract class AbstractService {
         return bankDataDto;
     }
 
-    public void addAccount(BankAccountDto savingsAccount) throws IOException, JsonProviderException, JAXBException {
+    @Override
+    public final void addAccount(BankAccountDto savingsAccount) throws IOException, JsonProviderException, JAXBException {
             if (savingsAccount == null) {
                 throw new IllegalArgumentException("The savingsAccount is null");
             }
@@ -88,7 +94,8 @@ public abstract class AbstractService {
         this.bankDataDto.getAmounts().add(amountHistory);
     }
 
-    public AmountAccount addAmount(Integer accountNumber, double amount, LocalDate operationDateFormatted) throws IOException, JAXBException {
+    @Override
+    public final AmountAccount addAmount(Integer accountNumber, double amount, LocalDate operationDateFormatted) throws IOException, JAXBException {
         if (accountNumber == null) {
             throw new IllegalArgumentException("The accountNumber is null");
         }
@@ -113,7 +120,8 @@ public abstract class AbstractService {
         return null;
     }
 
-    public AmountAccount removeAmount(Integer accountNumber, double amount, LocalDate operationDateFormatted) throws IOException, JAXBException {
+    @Override
+    public final AmountAccount removeAmount(Integer accountNumber, double amount, LocalDate operationDateFormatted) throws IOException, JAXBException {
         if (accountNumber == null) {
             throw new IllegalArgumentException("The accountNumber is null");
         }
@@ -138,7 +146,8 @@ public abstract class AbstractService {
         return null;
     }
 
-    public Collection<OutputSummaryAmountDto> filterAmountsByMonths(Integer accountNumber, LocalDate startDateFormatted, LocalDate endDateFormatted) throws IOException, JAXBException {
+    @Override
+    public final Collection<OutputSummaryAmountDto> filterAmountsByMonths(Integer accountNumber, LocalDate startDateFormatted, LocalDate endDateFormatted) throws IOException, JAXBException {
         if (accountNumber == null) {
             throw new IllegalArgumentException("The accountNumber is null");
         }
@@ -180,7 +189,8 @@ public abstract class AbstractService {
         return result.values();
     }
 
-    public Collection<OutputSummaryAmountDto> filterAmountsByWeeks(Integer accountNumber, LocalDate startDateFormatted, LocalDate endDateFormatted) throws IOException, JAXBException {
+    @Override
+    public final Collection<OutputSummaryAmountDto> filterAmountsByWeeks(Integer accountNumber, LocalDate startDateFormatted, LocalDate endDateFormatted) throws IOException, JAXBException {
         if (accountNumber == null) {
             throw new IllegalArgumentException("The accountNumber is null");
         }
@@ -225,7 +235,8 @@ public abstract class AbstractService {
         return result.values();
     }
 
-    public void addInterestRate(InterestRateDto interestRate) throws IOException, JsonProviderException, JAXBException {
+    @Override
+    public final void addInterestRate(InterestRateDto interestRate) throws IOException, JsonProviderException, JAXBException {
         if (interestRate == null) {
             throw new IllegalArgumentException("The interestRate is null");
         }
@@ -253,17 +264,20 @@ public abstract class AbstractService {
         }
     }
 
-    public InterestManagerProcessor getInterestManagerProcessor() throws IOException, JAXBException {
+    @Override
+    public final InterestManagerInterface getInterestManagerProcessor() throws IOException, JAXBException {
         readAccounts();
         return this.interestManagerProcessor;
     }
 
-    public AmountManagerProcessor getAmountsProcessor() throws IOException, JAXBException {
+    @Override
+    public final AmountManagerInterface getAmountsProcessor() throws IOException, JAXBException {
         readAccounts();
         return this.amountsProcessor;
     }
 
-    public AmountAccount getBalanceByAccount(Integer accountNumber) throws IOException, JsonProviderException, JAXBException {
+    @Override
+    public final AmountAccount getBalanceByAccount(Integer accountNumber) throws IOException, JsonProviderException, JAXBException {
         if (accountNumber == null) {
             throw new IllegalArgumentException("The accountNumber is null");
         }

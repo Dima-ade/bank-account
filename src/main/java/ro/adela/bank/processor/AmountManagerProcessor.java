@@ -77,7 +77,7 @@ public class AmountManagerProcessor implements AmountManagerInterface {
         if (amountManagerProcessor == null) {
             throw new IllegalArgumentException("The amountManagerProcessor argument is null");
         }
-        TotalInterestByDayDto totalInterestByDayDto = new TotalInterestByDayDto(startDate, endDate, accountNumber);
+        TotalInterestByDayDto totalInterestByDayDto = new TotalInterestByDayDto(startDate, endDate, 0.0, accountNumber);
         if (startDate.compareTo(endDate) > 0) {
             totalInterestByDayDto.setTotalInterest(0.0);
         } else {

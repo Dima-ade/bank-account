@@ -7,12 +7,14 @@ import ro.adela.bank.dto.OutputSummaryAmountDto;
 import ro.adela.bank.dto.TotalInterestByDayDto;
 import ro.adela.bank.exceptions.JsonProviderException;
 import ro.adela.bank.interfaces.AmountAccount;
+import ro.adela.bank.interfaces.AmountManagerInterface;
+import ro.adela.bank.interfaces.InterestManagerInterface;
 import ro.adela.bank.processor.AmountManagerProcessor;
-import ro.adela.bank.processor.InterestManagerProcessor;
 import ro.adela.bank.readobject.*;
-import ro.adela.bank.repository.AbstractService;
-import ro.adela.bank.repository.JsonService;
-import ro.adela.bank.repository.XmlService;
+import ro.adela.bank.service.AbstractFileService;
+import ro.adela.bank.service.AbstractService;
+import ro.adela.bank.service.JsonFileService;
+import ro.adela.bank.service.XmlFileService;
 import ro.adela.bank.utils.CsvFileWriter;
 
 import java.io.BufferedReader;
@@ -30,13 +32,22 @@ public class Main {
 
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-    private void run(String fileType) throws IOException, JsonProviderException, JAXBException {
-        File file  = new File("account.json");
-        this.repository = new JsonService(file);
+    private static AbstractService createService(String fileType) throws JAXBException {
+        AbstractService service;
         if (fileType.equals("xml")) {
-            file = new File("account.xml");
-            this.repository = new XmlService(file);
+            File file = new File("account.xml");
+            service = new XmlFileService(file);
+        } else if (fileType.equals("json")) {
+            File file = new File("account.json");
+            service = new JsonFileService(file);
+        } else {
+            throw new IllegalArgumentException(String.format("Unknown type %s.", fileType));
         }
+        return service;
+    }
+
+    private void run(String fileType) throws JAXBException {
+        this.repository = createService(fileType);
         // Java 17 multiline string
         String inputMessage = """
                 Please enter number from 1 - 10 or write 'exit' to stop the program.
@@ -95,7 +106,7 @@ public class Main {
         }
         while (createAccountReadObject == null);
 
-        BankAccountDto accountDto = new BankAccountDto(createAccountReadObject.getAccountNumber(), createAccountReadObject.getAccountHolderName(), createAccountReadObject.getBirtDate(), createAccountReadObject.getStartDate());
+        BankAccountDto accountDto = new BankAccountDto(createAccountReadObject.getAccountNumber(), createAccountReadObject.getAccountHolderName(), 0.0, createAccountReadObject.getBirtDate(), createAccountReadObject.getStartDate());
         System.out.println("Savings account balance: " + accountDto.getBalance()); // Check balance
 
         this.repository.addAccount(accountDto);
@@ -391,8 +402,8 @@ public class Main {
         System.out.println(String.format("The creation date is %s", startDate.toString()));
         System.out.println(String.format("The balance is %s", balance));
 
-        InterestManagerProcessor interestManagerProcessor = this.repository.getInterestManagerProcessor();
-        AmountManagerProcessor amountManagerProcessor = this.repository.getAmountsProcessor();
+        InterestManagerInterface interestManagerProcessor = this.repository.getInterestManagerProcessor();
+        AmountManagerInterface amountManagerProcessor = this.repository.getAmountsProcessor();
         TotalInterestByDayDto totalInterest = AmountManagerProcessor.computeTotalInterestBetweenTwoDates(startDate, endDate, accountNumber, interestManagerProcessor, amountManagerProcessor);
         System.out.println(String.format("The total interest for account number %d beteween %s and %s is %f", totalInterest.getAccountNumber(), totalInterest.getStarDate().toString(), totalInterest.getEndDate().toString(), totalInterest.getTotalInterest()));
 

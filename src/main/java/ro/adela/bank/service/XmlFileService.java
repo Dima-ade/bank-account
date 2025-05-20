@@ -1,22 +1,19 @@
-package ro.adela.bank.repository;
+package ro.adela.bank.service;
 
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
 import ro.adela.bank.dto.BankDataDto;
-import ro.adela.bank.processor.AmountManagerProcessor;
-import ro.adela.bank.processor.InterestManagerProcessor;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
-public class XmlService extends AbstractService{
+public class XmlFileService extends AbstractFileService {
 
     private JAXBContext jaxbContext;
 
-    public XmlService(File file) throws JAXBException {
+    public XmlFileService(File file) throws JAXBException {
         super(file);
 
         this.jaxbContext = JAXBContext.newInstance(BankDataDto.class);
