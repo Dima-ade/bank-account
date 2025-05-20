@@ -23,18 +23,22 @@ public class OutputSummaryAmountDto {
     @XmlElement(name = "in")
     @JsonProperty("in")
     private double in;
+
 //    @Column(name = "out")
     @XmlElement(name = "out")
     @JsonProperty("out")
     private double out;
+
 //    @Column(name = "startDate")
     @XmlElement(name = "startDate")
     @JsonProperty("startDate")
     private final LocalDate startDate;
+
 //    @Column(name = "endDate")
     @XmlElement(name = "endDate")
     @JsonProperty("endDate")
     private final LocalDate endDate;
+
 //    @Id
     @XmlElement(name = "accountNumber")
     @JsonProperty("accountNumber")

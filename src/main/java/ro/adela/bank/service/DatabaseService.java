@@ -52,7 +52,7 @@ public class DatabaseService extends AbstractService {
             throw new IllegalArgumentException("The operationDateFormatted is null");
         }
         BankAccountRepository bankAccountRepository = null;
-        AmountHistoryRepository amountHistoryRepository;
+        AmountHistoryRepository amountHistoryRepository = null;
         BankAccountDto account = null;
         try {
             // Start database
@@ -61,6 +61,7 @@ public class DatabaseService extends AbstractService {
             if (account != null) {
                 SavingsAccountProcessor savingsAccountProcessor = new SavingsAccountProcessor(account);
                 savingsAccountProcessor.deposit(amount);
+                bankAccountRepository.save(savingsAccountProcessor.getSavingsAccountDto());
                 double currentBalance = savingsAccountProcessor.getSavingsAccountDto().getBalance();
                 amountHistoryRepository = new AmountHistoryRepository();
                 AmountHistoryDto amountHistory = createHistory(amount, accountNumber, operationDateFormatted, OperationType.DEPOSIT, currentBalance);
@@ -69,8 +70,12 @@ public class DatabaseService extends AbstractService {
                 throw new IllegalArgumentException(String.format("The account %d does not exist", accountNumber));
             }
         } finally {
-            if (bankAccountRepository != null)
+            if (bankAccountRepository != null) {
                 bankAccountRepository.close();
+            }
+            if (amountHistoryRepository != null) {
+                amountHistoryRepository.close();
+            }
         }
         return account;
     }
@@ -84,7 +89,7 @@ public class DatabaseService extends AbstractService {
             throw new IllegalArgumentException("The operationDateFormatted is null");
         }
         BankAccountRepository bankAccountRepository = null;
-        AmountHistoryRepository amountHistoryRepository;
+        AmountHistoryRepository amountHistoryRepository = null;
         BankAccountDto account = null;
         try {
             // Start database
@@ -93,6 +98,7 @@ public class DatabaseService extends AbstractService {
             if (account != null) {
                 SavingsAccountProcessor savingsAccountProcessor = new SavingsAccountProcessor(account);
                 savingsAccountProcessor.withdraw(amount);
+                bankAccountRepository.save(savingsAccountProcessor.getSavingsAccountDto());
                 double currentBalance = savingsAccountProcessor.getSavingsAccountDto().getBalance();
                 amountHistoryRepository = new AmountHistoryRepository();
                 AmountHistoryDto amountHistory = createHistory(amount, accountNumber, operationDateFormatted, OperationType.DEPOSIT, currentBalance);
@@ -101,8 +107,12 @@ public class DatabaseService extends AbstractService {
                 throw new IllegalArgumentException(String.format("The account %d does not exist", accountNumber));
             }
         } finally {
-            if (bankAccountRepository != null)
+            if (bankAccountRepository != null) {
                 bankAccountRepository.close();
+            }
+            if (amountHistoryRepository != null) {
+                amountHistoryRepository.close();
+            }
         }
         return account;
     }

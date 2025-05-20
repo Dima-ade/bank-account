@@ -14,10 +14,7 @@ import ro.adela.bank.processor.SavingsAccountProcessor;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public abstract class AbstractService {
 

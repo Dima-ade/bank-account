@@ -30,20 +30,24 @@ public class BankAccountDto implements AmountAccount {
     @XmlElement(name = "accountNumber")
     @JsonProperty("accountNumber")
     private Integer accountNumber;
+
     // Attribute for account holder's name
     @Column(name = "accountHolderName")
     @XmlElement(name = "accountHolderName")
     @JsonProperty("accountHolderName")
     private String accountHolderName;
+
     // Attribute for account balance
     @Column(name = "balance")
     @XmlElement(name = "balance")
     @JsonProperty("balance")
     private double balance;
+
     @Column(name = "birtDate")
     @XmlElement(name = "birtDate")
     @JsonProperty("birtDate")
     private LocalDate birtDate;
+
     @Column(name = "startDate")
     @XmlElement(name = "startDate")
     @JsonProperty("startDate")

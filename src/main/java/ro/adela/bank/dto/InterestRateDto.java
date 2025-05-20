@@ -26,11 +26,13 @@ public class InterestRateDto {
     @JsonIgnore
     @XmlTransient
     private Integer id;
+
     // Attribute for interest rate
     @Column(name = "interestRate")
     @XmlElement(name = "interestRate")
     @JsonProperty("interestRate")
     private double interestRate;
+
     @Column(name = "activationDate")
     @XmlElement(name = "activationDate")
     @JsonProperty("activationDate")

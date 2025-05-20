@@ -20,8 +20,8 @@ import java.util.List;
 public class BankDataDto {
 
     //@Id
-    @JsonIgnore
-    @XmlTransient
+    //@JsonIgnore
+    //@XmlTransient
     private Integer id;
 //    @OneToMany(cascade = CascadeType.ALL)
 //    //define the column in the bank account table (the child) which will be

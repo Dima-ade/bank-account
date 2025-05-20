@@ -21,10 +21,10 @@ public class AmountHistoryRepository extends Repository<AmountHistoryDto, Intege
         try {
             tx = em.getTransaction();
             tx.begin();
-            if (emp.getAccountNumber() != null) {
+            if (emp.getId() != null) {
                 em.merge(emp);
             } else {
-                em.persist(emp);
+              em.persist(emp);
             }
             tx.commit();
         } catch (RuntimeException e) {

@@ -25,14 +25,17 @@ public class TotalInterestByDayDto {
     @XmlElement(name = "starDate")
     @JsonProperty("starDate")
     private LocalDate starDate;
+
 //    @Column(name = "endDate")
     @XmlElement(name = "endDate")
     @JsonProperty("endDate")
     private LocalDate endDate;
+
 //    @Column(name = "totalInterest")
     @XmlElement(name = "totalInterest")
     @JsonProperty("totalInterest")
     private double totalInterest;
+
 //    @Id
     @XmlElement(name = "accountNumber")
     @JsonProperty("accountNumber")
