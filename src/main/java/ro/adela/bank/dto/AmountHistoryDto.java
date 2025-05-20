@@ -7,11 +7,9 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.*;
 import ro.adela.bank.enums.OperationType;
+import ro.adela.bank.utils.EnumUppercaseConverter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -29,6 +27,8 @@ public class AmountHistoryDto {
     @JsonProperty("accountNumber")
     private Integer accountNumber;
     @Column(name = "operationType")
+    @Enumerated(EnumType.STRING)
+    @Convert(converter = EnumUppercaseConverter.class)
     @XmlElement(name = "operationType")
     @JsonProperty("operationType")
     private OperationType operationType;

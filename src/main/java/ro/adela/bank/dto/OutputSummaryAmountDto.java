@@ -12,30 +12,30 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.time.LocalDate;
 
-@Entity
+//@Entity
 @Data
 @ToString
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class OutputSummaryAmountDto {
 
-    @Column(name = "in")
+//    @Column(name = "in")
     @XmlElement(name = "in")
     @JsonProperty("in")
     private double in;
-    @Column(name = "out")
+//    @Column(name = "out")
     @XmlElement(name = "out")
     @JsonProperty("out")
     private double out;
-    @Column(name = "startDate")
+//    @Column(name = "startDate")
     @XmlElement(name = "startDate")
     @JsonProperty("startDate")
     private final LocalDate startDate;
-    @Column(name = "endDate")
+//    @Column(name = "endDate")
     @XmlElement(name = "endDate")
     @JsonProperty("endDate")
     private final LocalDate endDate;
-    @Id
+//    @Id
     @XmlElement(name = "accountNumber")
     @JsonProperty("accountNumber")
     private final Integer accountNumber;

@@ -75,25 +75,6 @@ public abstract class AbstractFileService extends AbstractService {
 
     protected abstract void writeAccounts() throws IOException, JAXBException;
 
-    private void createHistory(double amount, Integer accountNumber, LocalDate operationDateFormatted, OperationType operationType, double currentBalance) {
-        if (accountNumber == null) {
-            throw new IllegalArgumentException("The accountNumber is null");
-        }
-        if (operationDateFormatted == null) {
-            throw new IllegalArgumentException("The operationDateFormatted is null");
-        }
-        if (operationType == null) {
-            throw new IllegalArgumentException("The operationType is null");
-        }
-        AmountHistoryDto amountHistory = new AmountHistoryDto();
-        amountHistory.setAmount(amount);
-        amountHistory.setAccountNumber(accountNumber);
-        amountHistory.setDate(operationDateFormatted);
-        amountHistory.setOperationType(operationType);
-        amountHistory.setCurrentBalance(currentBalance);
-        this.bankDataDto.getAmounts().add(amountHistory);
-    }
-
     @Override
     public final AmountAccount addAmount(Integer accountNumber, double amount, LocalDate operationDateFormatted) throws IOException, JAXBException {
         if (accountNumber == null) {
@@ -109,7 +90,8 @@ public abstract class AbstractFileService extends AbstractService {
                     SavingsAccountProcessor savingsAccountProcessor = new SavingsAccountProcessor(account);
                     savingsAccountProcessor.deposit(amount);
                     double currentBalance = savingsAccountProcessor.getSavingsAccountDto().getBalance();
-                    createHistory(amount, accountNumber, operationDateFormatted, OperationType.DEPOSIT, currentBalance);
+                    AmountHistoryDto amountHistory = createHistory(amount, accountNumber, operationDateFormatted, OperationType.DEPOSIT, currentBalance);
+                    this.bankDataDto.getAmounts().add(amountHistory);
                     // write JSON to a File
                     writeAccounts();
                     this.amountsProcessor.sortAmounts();

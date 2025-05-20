@@ -11,10 +11,7 @@ import ro.adela.bank.interfaces.AmountManagerInterface;
 import ro.adela.bank.interfaces.InterestManagerInterface;
 import ro.adela.bank.processor.AmountManagerProcessor;
 import ro.adela.bank.readobject.*;
-import ro.adela.bank.service.AbstractFileService;
-import ro.adela.bank.service.AbstractService;
-import ro.adela.bank.service.JsonFileService;
-import ro.adela.bank.service.XmlFileService;
+import ro.adela.bank.service.*;
 import ro.adela.bank.utils.CsvFileWriter;
 
 import java.io.BufferedReader;
@@ -40,6 +37,8 @@ public class Main {
         } else if (fileType.equals("json")) {
             File file = new File("account.json");
             service = new JsonFileService(file);
+        } else if (fileType.equals("db")) {
+            service = new DatabaseService();
         } else {
             throw new IllegalArgumentException(String.format("Unknown type %s.", fileType));
         }

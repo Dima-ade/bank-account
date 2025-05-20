@@ -38,4 +38,23 @@ public abstract class AbstractService {
     public abstract AmountAccount addAmount(Integer accountNumber, double amount, LocalDate operationDateFormatted) throws IOException, JAXBException;
 
     public abstract AmountAccount removeAmount(Integer accountNumber, double amount, LocalDate operationDateFormatted) throws IOException, JAXBException;
+
+    protected AmountHistoryDto createHistory(double amount, Integer accountNumber, LocalDate operationDateFormatted, OperationType operationType, double currentBalance) {
+        if (accountNumber == null) {
+            throw new IllegalArgumentException("The accountNumber is null");
+        }
+        if (operationDateFormatted == null) {
+            throw new IllegalArgumentException("The operationDateFormatted is null");
+        }
+        if (operationType == null) {
+            throw new IllegalArgumentException("The operationType is null");
+        }
+        AmountHistoryDto amountHistory = new AmountHistoryDto();
+        amountHistory.setAmount(amount);
+        amountHistory.setAccountNumber(accountNumber);
+        amountHistory.setDate(operationDateFormatted);
+        amountHistory.setOperationType(operationType);
+        amountHistory.setCurrentBalance(currentBalance);
+        return amountHistory;
+    }
 }

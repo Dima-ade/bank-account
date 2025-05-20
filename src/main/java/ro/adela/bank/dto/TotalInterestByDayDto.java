@@ -12,7 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.time.LocalDate;
 
-@Entity
+//@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,19 +21,19 @@ import java.time.LocalDate;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class TotalInterestByDayDto {
-    @Column(name = "starDate")
+//    @Column(name = "starDate")
     @XmlElement(name = "starDate")
     @JsonProperty("starDate")
     private LocalDate starDate;
-    @Column(name = "endDate")
+//    @Column(name = "endDate")
     @XmlElement(name = "endDate")
     @JsonProperty("endDate")
     private LocalDate endDate;
-    @Column(name = "totalInterest")
+//    @Column(name = "totalInterest")
     @XmlElement(name = "totalInterest")
     @JsonProperty("totalInterest")
     private double totalInterest;
-    @Id
+//    @Id
     @XmlElement(name = "accountNumber")
     @JsonProperty("accountNumber")
     private Integer accountNumber;

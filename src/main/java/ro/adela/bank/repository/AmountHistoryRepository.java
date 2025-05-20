@@ -51,7 +51,7 @@ public class AmountHistoryRepository extends Repository<AmountHistoryDto, Intege
     public List<AmountHistoryDto> findAll() {
         EntityManager em = emf.createEntityManager();
         return em.createQuery(
-                "SELECT e FROM AmountHistoryDto e")
+                "SELECT e FROM AmountHistoryDto e ORDER BY e.date DESC")
                 .getResultList();
     }
 

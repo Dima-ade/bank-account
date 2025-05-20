@@ -52,7 +52,7 @@ public abstract class Repository<T, K> {
         map.put(JPA_JDBC_PASSWORD, "admin");
         map.put(DIALECT, org.hibernate.dialect.PostgresPlusDialect.class);
 //		map.put(DIALECT, "org.hibernate.dialect.H2Dialect");
-        map.put(HBM2DDL_AUTO, "create");
+        map.put(HBM2DDL_AUTO, "update");
         map.put(SHOW_SQL, "true");
         map.put(QUERY_STARTUP_CHECKING, "false");
         map.put(GENERATE_STATISTICS, "false");
