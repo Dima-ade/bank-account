@@ -19,11 +19,7 @@ import ro.adela.bank.repository.InterestRateRepository;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.temporal.TemporalAdjusters;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class DatabaseService extends AbstractService {
 
@@ -158,7 +154,8 @@ public class DatabaseService extends AbstractService {
         return new InterestManagerProcessor(getInterests());
     }
 
-    private List<AmountHistoryDto> getAmounts() {
+    @Override
+    public final List<AmountHistoryDto> getAmounts() {
         List<AmountHistoryDto> amounts = null;
 
         AmountHistoryRepository repository = null;
@@ -200,90 +197,90 @@ public class DatabaseService extends AbstractService {
         return account;
     }
 
-    @Override
-    public Collection<OutputSummaryAmountDto> filterAmountsByWeeks(Integer accountNumber, LocalDate startDateFormatted, LocalDate endDateFormatted) throws IOException, JAXBException {
-        if (startDateFormatted == null) {
-            throw new IllegalArgumentException("The startDateFormatted is null");
-        }
-        if (endDateFormatted == null) {
-            throw new IllegalArgumentException("The endDateFormatted is null");
-        }
-        List<AmountHistoryDto> amounts = getAmounts();
-        Map<String, OutputSummaryAmountDto> result = new HashMap<>();
-        for (AmountHistoryDto accountAmount : amounts) {
-            if (accountNumber == null || accountNumber.equals(accountAmount.getAccountNumber())) {
-                LocalDate date = accountAmount.getDate();
-                if (date.compareTo(startDateFormatted) >= 0 && date.compareTo(endDateFormatted) <= 0) {
-                    int dayOfMonth = date.getDayOfMonth();
-                    int dayOfWeek = date.getDayOfWeek().getValue();
-                    int calculatedDay = dayOfMonth + (7 - dayOfWeek);
+//    @Override
+//    public Collection<OutputSummaryAmountDto> filterAmountsByWeeks(Integer accountNumber, LocalDate startDateFormatted, LocalDate endDateFormatted) throws IOException, JAXBException {
+//        if (startDateFormatted == null) {
+//            throw new IllegalArgumentException("The startDateFormatted is null");
+//        }
+//        if (endDateFormatted == null) {
+//            throw new IllegalArgumentException("The endDateFormatted is null");
+//        }
+//        List<AmountHistoryDto> amounts = getAmounts();
+//        Map<String, OutputSummaryAmountDto> result = new HashMap<>();
+//        for (AmountHistoryDto accountAmount : amounts) {
+//            if (accountNumber == null || accountNumber.equals(accountAmount.getAccountNumber())) {
+//                LocalDate date = accountAmount.getDate();
+//                if (date.compareTo(startDateFormatted) >= 0 && date.compareTo(endDateFormatted) <= 0) {
+//                    int dayOfMonth = date.getDayOfMonth();
+//                    int dayOfWeek = date.getDayOfWeek().getValue();
+//                    int calculatedDay = dayOfMonth + (7 - dayOfWeek);
+//
+//                    LocalDate firstDayOfMonth = date.minusDays(dayOfMonth - 1);
+//                    LocalDate lastDayOfMonth = firstDayOfMonth.plusMonths(1).minusDays(1);
+//                    int lastDayOfMontInt = lastDayOfMonth.getDayOfMonth();
+//                    int day = calculatedDay <= lastDayOfMontInt ? calculatedDay : lastDayOfMontInt;
+//                    int month = date.getMonthValue();
+//                    int year = date.getYear();
+//                    LocalDate endDate = LocalDate.of(year, month, day);
+//
+//                    StringBuilder key = new StringBuilder();
+//                    key.append(date.getMonthValue())
+//                            .append("-")
+//                            .append(date.getYear());
+//                    OutputSummaryAmountDto summaryAmount = result.get(key.toString());
+//                    if(summaryAmount == null) {
+//                        summaryAmount = new OutputSummaryAmountDto(date, endDate, accountNumber);
+//                        result.put(key.toString(), summaryAmount);
+//                    }
+//                    if (accountAmount.getOperationType().equals(OperationType.DEPOSIT)) {
+//                        summaryAmount.setIn(summaryAmount.getIn() + accountAmount.getAmount());
+//                    } else if (accountAmount.getOperationType().equals(OperationType.WITHDRAW)) {
+//                        summaryAmount.setOut(summaryAmount.getOut() + accountAmount.getAmount());
+//                    }
+//                }
+//            }
+//        }
+//        return result.values();
+//    }
 
-                    LocalDate firstDayOfMonth = date.minusDays(dayOfMonth - 1);
-                    LocalDate lastDayOfMonth = firstDayOfMonth.plusMonths(1).minusDays(1);
-                    int lastDayOfMontInt = lastDayOfMonth.getDayOfMonth();
-                    int day = calculatedDay <= lastDayOfMontInt ? calculatedDay : lastDayOfMontInt;
-                    int month = date.getMonthValue();
-                    int year = date.getYear();
-                    LocalDate endDate = LocalDate.of(year, month, day);
-
-                    StringBuilder key = new StringBuilder();
-                    key.append(date.getMonthValue())
-                            .append("-")
-                            .append(date.getYear());
-                    OutputSummaryAmountDto summaryAmount = result.get(key.toString());
-                    if(summaryAmount == null) {
-                        summaryAmount = new OutputSummaryAmountDto(date, endDate, accountNumber);
-                        result.put(key.toString(), summaryAmount);
-                    }
-                    if (accountAmount.getOperationType().equals(OperationType.DEPOSIT)) {
-                        summaryAmount.setIn(summaryAmount.getIn() + accountAmount.getAmount());
-                    } else if (accountAmount.getOperationType().equals(OperationType.WITHDRAW)) {
-                        summaryAmount.setOut(summaryAmount.getOut() + accountAmount.getAmount());
-                    }
-                }
-            }
-        }
-        return result.values();
-    }
-
-    @Override
-    public Collection<OutputSummaryAmountDto> filterAmountsByMonths(Integer accountNumber, LocalDate startDateFormatted, LocalDate endDateFormatted) {
-        if (startDateFormatted == null) {
-            throw new IllegalArgumentException("The startDateFormatted is null");
-        }
-        if (endDateFormatted == null) {
-            throw new IllegalArgumentException("The endDateFormatted is null");
-        }
-        List<AmountHistoryDto> amounts = getAmounts();
-        Map<String, OutputSummaryAmountDto> result = new HashMap<>();
-        for (AmountHistoryDto accountAmount : amounts) {
-            if (accountNumber == null || accountNumber.equals(accountAmount.getAccountNumber())) {
-                LocalDate date = accountAmount.getDate();
-
-                if (date.compareTo(startDateFormatted) >= 0 && date.compareTo(endDateFormatted) <= 0) {
-                    int dayOfMonth = date.getDayOfMonth();
-                    LocalDate firstDayOfMonth = date.minusDays(dayOfMonth - 1);
-                    int month = date.getMonthValue();
-                    int year = date.getYear();
-                    LocalDate startDate = LocalDate.of(year, month, firstDayOfMonth.getDayOfMonth());
-                    LocalDate endDate = firstDayOfMonth.plusMonths(1).minusDays(1);
-                    StringBuilder key = new StringBuilder();
-                    key.append(date.getMonthValue())
-                            .append("-")
-                            .append(date.getYear());
-                    OutputSummaryAmountDto summaryAmount = result.get(key.toString());
-                    if(summaryAmount == null) {
-                        summaryAmount = new OutputSummaryAmountDto(startDate, endDate, accountNumber);
-                        result.put(key.toString(), summaryAmount);
-                    }
-                    if (accountAmount.getOperationType().equals(OperationType.DEPOSIT)) {
-                        summaryAmount.setIn(summaryAmount.getIn() + accountAmount.getAmount());
-                    } else if (accountAmount.getOperationType().equals(OperationType.WITHDRAW)) {
-                        summaryAmount.setOut(summaryAmount.getOut() + accountAmount.getAmount());
-                    }
-                }
-            }
-        }
-        return result.values();
-    }
+//    @Override
+//    public Collection<OutputSummaryAmountDto> filterAmountsByMonths(Integer accountNumber, LocalDate startDateFormatted, LocalDate endDateFormatted) {
+//        if (startDateFormatted == null) {
+//            throw new IllegalArgumentException("The startDateFormatted is null");
+//        }
+//        if (endDateFormatted == null) {
+//            throw new IllegalArgumentException("The endDateFormatted is null");
+//        }
+//        List<AmountHistoryDto> amounts = getAmounts();
+//        Map<String, OutputSummaryAmountDto> result = new HashMap<>();
+//        for (AmountHistoryDto accountAmount : amounts) {
+//            if (accountNumber == null || accountNumber.equals(accountAmount.getAccountNumber())) {
+//                LocalDate date = accountAmount.getDate();
+//
+//                if (date.compareTo(startDateFormatted) >= 0 && date.compareTo(endDateFormatted) <= 0) {
+//                    int dayOfMonth = date.getDayOfMonth();
+//                    LocalDate firstDayOfMonth = date.minusDays(dayOfMonth - 1);
+//                    int month = date.getMonthValue();
+//                    int year = date.getYear();
+//                    LocalDate startDate = LocalDate.of(year, month, firstDayOfMonth.getDayOfMonth());
+//                    LocalDate endDate = firstDayOfMonth.plusMonths(1).minusDays(1);
+//                    StringBuilder key = new StringBuilder();
+//                    key.append(date.getMonthValue())
+//                            .append("-")
+//                            .append(date.getYear());
+//                    OutputSummaryAmountDto summaryAmount = result.get(key.toString());
+//                    if(summaryAmount == null) {
+//                        summaryAmount = new OutputSummaryAmountDto(startDate, endDate, accountNumber);
+//                        result.put(key.toString(), summaryAmount);
+//                    }
+//                    if (accountAmount.getOperationType().equals(OperationType.DEPOSIT)) {
+//                        summaryAmount.setIn(summaryAmount.getIn() + accountAmount.getAmount());
+//                    } else if (accountAmount.getOperationType().equals(OperationType.WITHDRAW)) {
+//                        summaryAmount.setOut(summaryAmount.getOut() + accountAmount.getAmount());
+//                    }
+//                }
+//            }
+//        }
+//        return result.values();
+//    }
 }
