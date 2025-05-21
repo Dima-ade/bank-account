@@ -1,4 +1,4 @@
-Enter from the command line the file type to generate: xml or json.
+Enter from the command line the file type to generate: xml or json or db. (The postgres DB connection details are in the class Repository.java)
 Please enter number from 1 - 10 or write 'exit' to stop the program.
                 1 create account
                 2 add money
