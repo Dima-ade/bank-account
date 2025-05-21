@@ -5,10 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.xml.bind.annotation.*;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -23,6 +20,7 @@ import java.time.LocalDate;
 public class InterestRateDto {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonIgnore
     @XmlTransient
     private Integer id;

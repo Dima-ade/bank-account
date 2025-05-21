@@ -130,9 +130,6 @@ public abstract class AbstractFileService extends AbstractService {
 
     @Override
     public final Collection<OutputSummaryAmountDto> filterAmountsByMonths(Integer accountNumber, LocalDate startDateFormatted, LocalDate endDateFormatted) throws IOException, JAXBException {
-        if (accountNumber == null) {
-            throw new IllegalArgumentException("The accountNumber is null");
-        }
         if (startDateFormatted == null) {
             throw new IllegalArgumentException("The startDateFormatted is null");
         }
@@ -173,9 +170,6 @@ public abstract class AbstractFileService extends AbstractService {
 
     @Override
     public final Collection<OutputSummaryAmountDto> filterAmountsByWeeks(Integer accountNumber, LocalDate startDateFormatted, LocalDate endDateFormatted) throws IOException, JAXBException {
-        if (accountNumber == null) {
-            throw new IllegalArgumentException("The accountNumber is null");
-        }
         if (startDateFormatted == null) {
             throw new IllegalArgumentException("The startDateFormatted is null");
         }

@@ -48,10 +48,10 @@ public class InterestRateRepository extends Repository<InterestRateDto, Integer>
         return Optional.ofNullable(emp);
     }
 
-    public List<BankAccountDto> findAll() {
+    public List<InterestRateDto> findAll() {
         EntityManager em = emf.createEntityManager();
         return em.createQuery(
-                "SELECT e FROM InterestRateDto e")
+                "SELECT e FROM InterestRateDto e ORDER BY e.activationDate DESC")
                 .getResultList();
     }
 
