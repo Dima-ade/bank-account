@@ -217,9 +217,11 @@ public class DatabaseService extends AbstractService {
                     int dayOfMonth = date.getDayOfMonth();
                     int dayOfWeek = date.getDayOfWeek().getValue();
                     int calculatedDay = dayOfMonth + (7 - dayOfWeek);
-                    int lastDayOfMonth = date.plusMonths(1).minusDays(1).getDayOfMonth() + 1;
-                    LocalDate firstDayOfMonth =  date.minusDays(dayOfMonth - 1);
-                    int day = calculatedDay <= lastDayOfMonth ? calculatedDay : lastDayOfMonth;
+
+                    LocalDate firstDayOfMonth = date.minusDays(dayOfMonth - 1);
+                    LocalDate lastDayOfMonth = firstDayOfMonth.plusMonths(1).minusDays(1);
+                    int lastDayOfMontInt = lastDayOfMonth.getDayOfMonth();
+                    int day = calculatedDay <= lastDayOfMontInt ? calculatedDay : lastDayOfMontInt;
                     int month = date.getMonthValue();
                     int year = date.getYear();
                     LocalDate endDate = LocalDate.of(year, month, day);
