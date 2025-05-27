@@ -1,10 +1,10 @@
 package ro.adela.bank.service;
 
 import jakarta.xml.bind.JAXBException;
+import org.hibernate.jpa.HibernatePersistenceProvider;
 import ro.adela.bank.dto.AmountHistoryDto;
 import ro.adela.bank.dto.BankAccountDto;
 import ro.adela.bank.dto.InterestRateDto;
-import ro.adela.bank.dto.OutputSummaryAmountDto;
 import ro.adela.bank.enums.OperationType;
 import ro.adela.bank.exceptions.JsonProviderException;
 import ro.adela.bank.interfaces.AmountAccount;
@@ -16,12 +16,22 @@ import ro.adela.bank.processor.SavingsAccountProcessor;
 import ro.adela.bank.repository.AmountHistoryRepository;
 import ro.adela.bank.repository.BankAccountRepository;
 import ro.adela.bank.repository.InterestRateRepository;
+import ro.adela.bank.repository.Repository;
 
+import javax.persistence.EntityManagerFactory;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
 public class DatabaseService extends AbstractService {
+
+    public EntityManagerFactory emf;
+
+    public DatabaseService() {
+        emf = new HibernatePersistenceProvider()
+                .createContainerEntityManagerFactory(Repository.archiverPersistenceUnitInfo(), Repository.config());
+
+    }
 
     @Override
     public void addAccount(BankAccountDto savingsAccount) {
@@ -30,16 +40,9 @@ public class DatabaseService extends AbstractService {
             throw new IllegalArgumentException("The savingsAccount is null");
         }
 
-        BankAccountRepository repository = null;
-        try {
-            // Start database
-            repository = new BankAccountRepository();
+        BankAccountRepository repository = new BankAccountRepository(emf);
             // Create person
-            repository.save(savingsAccount);
-        } finally {
-            if (repository != null)
-                repository.close();
-        }
+        repository.save(savingsAccount);
     }
 
     @Override
@@ -50,32 +53,21 @@ public class DatabaseService extends AbstractService {
         if (operationDateFormatted == null) {
             throw new IllegalArgumentException("The operationDateFormatted is null");
         }
-        BankAccountRepository bankAccountRepository = null;
-        AmountHistoryRepository amountHistoryRepository = null;
-        BankAccountDto account = null;
-        try {
+
             // Start database
-            bankAccountRepository = new BankAccountRepository();
-            account = bankAccountRepository.findById(accountNumber).get();
+            BankAccountRepository bankAccountRepository = new BankAccountRepository(emf);
+            BankAccountDto account = bankAccountRepository.findById(accountNumber).get();
             if (account != null) {
                 SavingsAccountProcessor savingsAccountProcessor = new SavingsAccountProcessor(account);
                 savingsAccountProcessor.deposit(amount);
                 bankAccountRepository.save(savingsAccountProcessor.getSavingsAccountDto());
                 double currentBalance = savingsAccountProcessor.getSavingsAccountDto().getBalance();
-                amountHistoryRepository = new AmountHistoryRepository();
+                AmountHistoryRepository amountHistoryRepository = new AmountHistoryRepository(emf);
                 AmountHistoryDto amountHistory = createHistory(amount, accountNumber, operationDateFormatted, OperationType.DEPOSIT, currentBalance);
                 amountHistoryRepository.save(amountHistory);
             } else {
                 throw new IllegalArgumentException(String.format("The account %d does not exist", accountNumber));
             }
-        } finally {
-            if (bankAccountRepository != null) {
-                bankAccountRepository.close();
-            }
-            if (amountHistoryRepository != null) {
-                amountHistoryRepository.close();
-            }
-        }
         return account;
     }
 
@@ -87,32 +79,20 @@ public class DatabaseService extends AbstractService {
         if (operationDateFormatted == null) {
             throw new IllegalArgumentException("The operationDateFormatted is null");
         }
-        BankAccountRepository bankAccountRepository = null;
-        AmountHistoryRepository amountHistoryRepository = null;
-        BankAccountDto account = null;
-        try {
-            // Start database
-            bankAccountRepository = new BankAccountRepository();
-            account = bankAccountRepository.findById(accountNumber).get();
+        // Start database
+            BankAccountRepository bankAccountRepository = new BankAccountRepository(emf);
+            BankAccountDto account = bankAccountRepository.findById(accountNumber).get();
             if (account != null) {
                 SavingsAccountProcessor savingsAccountProcessor = new SavingsAccountProcessor(account);
                 savingsAccountProcessor.withdraw(amount);
                 bankAccountRepository.save(savingsAccountProcessor.getSavingsAccountDto());
                 double currentBalance = savingsAccountProcessor.getSavingsAccountDto().getBalance();
-                amountHistoryRepository = new AmountHistoryRepository();
+                AmountHistoryRepository amountHistoryRepository = new AmountHistoryRepository(emf);
                 AmountHistoryDto amountHistory = createHistory(amount, accountNumber, operationDateFormatted, OperationType.WITHDRAW, currentBalance);
                 amountHistoryRepository.save(amountHistory);
             } else {
                 throw new IllegalArgumentException(String.format("The account %d does not exist", accountNumber));
             }
-        } finally {
-            if (bankAccountRepository != null) {
-                bankAccountRepository.close();
-            }
-            if (amountHistoryRepository != null) {
-                amountHistoryRepository.close();
-            }
-        }
         return account;
     }
 
@@ -122,30 +102,17 @@ public class DatabaseService extends AbstractService {
             throw new IllegalArgumentException("The interestRate is null");
         }
 
-        InterestRateRepository repository = null;
-        try {
-            // Start database
-            repository = new InterestRateRepository();
-            // Create person
-            repository.save(interestRate);
-        } finally {
-            if (repository != null)
-                repository.close();
-        }
+        InterestRateRepository repository = new InterestRateRepository(emf);
+        // Create person
+        repository.save(interestRate);
     }
 
     private List<InterestRateDto> getInterests() {
         List<InterestRateDto> interestRates = null;
 
-        InterestRateRepository repository = null;
-        try {
-            // Start database
-            repository = new InterestRateRepository();
-            interestRates = repository.findAll();
-        } finally {
-            if (repository != null)
-                repository.close();
-        }
+        InterestRateRepository repository = new InterestRateRepository(emf);
+        interestRates = repository.findAll();
+
         return interestRates;
     }
 
@@ -158,15 +125,9 @@ public class DatabaseService extends AbstractService {
     public final List<AmountHistoryDto> getAmounts() {
         List<AmountHistoryDto> amounts = null;
 
-        AmountHistoryRepository repository = null;
-        try {
-            // Start database
-            repository = new AmountHistoryRepository();
-            amounts = repository.findAll();
-        } finally {
-            if (repository != null)
-                repository.close();
-        }
+        AmountHistoryRepository repository = new AmountHistoryRepository(emf);
+        amounts = repository.findAll();
+
         return amounts;
     }
 
@@ -180,107 +141,13 @@ public class DatabaseService extends AbstractService {
         if (accountNumber == null) {
             throw new IllegalArgumentException("The accountNumber is null");
         }
-        BankAccountRepository bankAccountRepository = null;
-        BankAccountDto account = null;
-        try {
-            // Start database
-            bankAccountRepository = new BankAccountRepository();
-            account = bankAccountRepository.findById(accountNumber).get();
+
+        // Start database
+            BankAccountRepository bankAccountRepository = new BankAccountRepository(emf);
+            BankAccountDto account = bankAccountRepository.findById(accountNumber).get();
             if (account == null) {
                 throw new IllegalArgumentException(String.format("The account %d does not exist", accountNumber));
             }
-        } finally {
-            if (bankAccountRepository != null) {
-                bankAccountRepository.close();
-            }
-        }
         return account;
     }
-
-//    @Override
-//    public Collection<OutputSummaryAmountDto> filterAmountsByWeeks(Integer accountNumber, LocalDate startDateFormatted, LocalDate endDateFormatted) throws IOException, JAXBException {
-//        if (startDateFormatted == null) {
-//            throw new IllegalArgumentException("The startDateFormatted is null");
-//        }
-//        if (endDateFormatted == null) {
-//            throw new IllegalArgumentException("The endDateFormatted is null");
-//        }
-//        List<AmountHistoryDto> amounts = getAmounts();
-//        Map<String, OutputSummaryAmountDto> result = new HashMap<>();
-//        for (AmountHistoryDto accountAmount : amounts) {
-//            if (accountNumber == null || accountNumber.equals(accountAmount.getAccountNumber())) {
-//                LocalDate date = accountAmount.getDate();
-//                if (date.compareTo(startDateFormatted) >= 0 && date.compareTo(endDateFormatted) <= 0) {
-//                    int dayOfMonth = date.getDayOfMonth();
-//                    int dayOfWeek = date.getDayOfWeek().getValue();
-//                    int calculatedDay = dayOfMonth + (7 - dayOfWeek);
-//
-//                    LocalDate firstDayOfMonth = date.minusDays(dayOfMonth - 1);
-//                    LocalDate lastDayOfMonth = firstDayOfMonth.plusMonths(1).minusDays(1);
-//                    int lastDayOfMontInt = lastDayOfMonth.getDayOfMonth();
-//                    int day = calculatedDay <= lastDayOfMontInt ? calculatedDay : lastDayOfMontInt;
-//                    int month = date.getMonthValue();
-//                    int year = date.getYear();
-//                    LocalDate endDate = LocalDate.of(year, month, day);
-//
-//                    StringBuilder key = new StringBuilder();
-//                    key.append(date.getMonthValue())
-//                            .append("-")
-//                            .append(date.getYear());
-//                    OutputSummaryAmountDto summaryAmount = result.get(key.toString());
-//                    if(summaryAmount == null) {
-//                        summaryAmount = new OutputSummaryAmountDto(date, endDate, accountNumber);
-//                        result.put(key.toString(), summaryAmount);
-//                    }
-//                    if (accountAmount.getOperationType().equals(OperationType.DEPOSIT)) {
-//                        summaryAmount.setIn(summaryAmount.getIn() + accountAmount.getAmount());
-//                    } else if (accountAmount.getOperationType().equals(OperationType.WITHDRAW)) {
-//                        summaryAmount.setOut(summaryAmount.getOut() + accountAmount.getAmount());
-//                    }
-//                }
-//            }
-//        }
-//        return result.values();
-//    }
-
-//    @Override
-//    public Collection<OutputSummaryAmountDto> filterAmountsByMonths(Integer accountNumber, LocalDate startDateFormatted, LocalDate endDateFormatted) {
-//        if (startDateFormatted == null) {
-//            throw new IllegalArgumentException("The startDateFormatted is null");
-//        }
-//        if (endDateFormatted == null) {
-//            throw new IllegalArgumentException("The endDateFormatted is null");
-//        }
-//        List<AmountHistoryDto> amounts = getAmounts();
-//        Map<String, OutputSummaryAmountDto> result = new HashMap<>();
-//        for (AmountHistoryDto accountAmount : amounts) {
-//            if (accountNumber == null || accountNumber.equals(accountAmount.getAccountNumber())) {
-//                LocalDate date = accountAmount.getDate();
-//
-//                if (date.compareTo(startDateFormatted) >= 0 && date.compareTo(endDateFormatted) <= 0) {
-//                    int dayOfMonth = date.getDayOfMonth();
-//                    LocalDate firstDayOfMonth = date.minusDays(dayOfMonth - 1);
-//                    int month = date.getMonthValue();
-//                    int year = date.getYear();
-//                    LocalDate startDate = LocalDate.of(year, month, firstDayOfMonth.getDayOfMonth());
-//                    LocalDate endDate = firstDayOfMonth.plusMonths(1).minusDays(1);
-//                    StringBuilder key = new StringBuilder();
-//                    key.append(date.getMonthValue())
-//                            .append("-")
-//                            .append(date.getYear());
-//                    OutputSummaryAmountDto summaryAmount = result.get(key.toString());
-//                    if(summaryAmount == null) {
-//                        summaryAmount = new OutputSummaryAmountDto(startDate, endDate, accountNumber);
-//                        result.put(key.toString(), summaryAmount);
-//                    }
-//                    if (accountAmount.getOperationType().equals(OperationType.DEPOSIT)) {
-//                        summaryAmount.setIn(summaryAmount.getIn() + accountAmount.getAmount());
-//                    } else if (accountAmount.getOperationType().equals(OperationType.WITHDRAW)) {
-//                        summaryAmount.setOut(summaryAmount.getOut() + accountAmount.getAmount());
-//                    }
-//                }
-//            }
-//        }
-//        return result.values();
-//    }
 }

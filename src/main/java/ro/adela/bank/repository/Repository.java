@@ -23,15 +23,24 @@ import static org.hibernate.cfg.AvailableSettings.*;
  * @param <K>
  */
 public abstract class Repository<T, K> {
-    protected EntityManagerFactory emf = new HibernatePersistenceProvider().createContainerEntityManagerFactory(archiverPersistenceUnitInfo(), config());
 
-	/*
+    /*
 		If you want to use `persistence.xml`, just rename `src/main/resources/META-INF/persistence.xml.not_used` and replace EntityManagerFactory as below
 
 		protected EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.codspire.db.mgmt");
 	 */
 
     private static final String PERSISTENCE_UNIT_NAME = "ro.adela.bank";
+
+    protected final EntityManagerFactory emf;
+
+    protected Repository(EntityManagerFactory emf) {
+        this.emf = emf;
+    }
+
+    protected Repository() {
+        this.emf = new HibernatePersistenceProvider().createContainerEntityManagerFactory(archiverPersistenceUnitInfo(), config());
+    }
 
     abstract Optional<T> save(T obj);
 
@@ -43,7 +52,7 @@ public abstract class Repository<T, K> {
         emf.close();
     }
 
-    private Map<String, Object> config() {
+    public static Map<String, Object> config() {
         Map<String, Object> map = new HashMap<>();
 
         map.put(JPA_JDBC_DRIVER, "org.postgresql.Driver");
@@ -70,7 +79,7 @@ public abstract class Repository<T, K> {
         return map;
     }
 
-    private static PersistenceUnitInfo archiverPersistenceUnitInfo() {
+    public static PersistenceUnitInfo archiverPersistenceUnitInfo() {
         return new PersistenceUnitInfo() {
             @Override
             public String getPersistenceUnitName() {

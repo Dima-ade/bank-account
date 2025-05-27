@@ -5,12 +5,17 @@ import ro.adela.bank.dto.BankAccountDto;
 import ro.adela.bank.dto.InterestRateDto;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
 public class InterestRateRepository extends Repository<InterestRateDto, Integer> {
+
+    public InterestRateRepository(EntityManagerFactory emf) {
+        super(emf);
+    }
 
     @Override
     public Optional<InterestRateDto> save(InterestRateDto emp) {

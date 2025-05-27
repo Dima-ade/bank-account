@@ -5,12 +5,17 @@ import ro.adela.bank.dto.BankAccountDto;
 import ro.adela.bank.test.entity.Employee;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
 public class BankAccountRepository extends Repository<BankAccountDto, Integer> {
+
+    public BankAccountRepository(EntityManagerFactory emf) {
+        super(emf);
+    }
 
     @Override
     public Optional<BankAccountDto> save(BankAccountDto emp) {
