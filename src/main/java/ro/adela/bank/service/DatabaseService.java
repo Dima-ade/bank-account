@@ -150,4 +150,14 @@ public class DatabaseService extends AbstractService {
             }
         return account;
     }
+
+    @Override
+    public List<InterestRateDto> getInterestByPage(Integer pageNumber, Integer pageSize) {
+        List<InterestRateDto> interests = null;
+
+        InterestRateRepository repository = new InterestRateRepository(emf);
+        interests = repository.findByPage(pageNumber, pageSize);
+
+        return interests;
+    }
 }

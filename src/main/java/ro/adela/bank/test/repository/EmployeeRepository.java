@@ -4,6 +4,8 @@ import ro.adela.bank.test.entity.Employee;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -41,6 +43,37 @@ public class EmployeeRepository extends Repository<Employee, Integer> {
         return em.createQuery(
                 "SELECT e FROM Employee e")
                 .getResultList();
+    }
+
+    public List<Employee> findByPage(int pageNumber, int pageSize) {
+        EntityManager em = emf.createEntityManager();
+
+        Query query = em.createQuery("From Employee");
+        query.setFirstResult((pageNumber-1) * pageSize);
+        query.setMaxResults(pageSize);
+        List <Employee> employeeList = query.getResultList();
+
+        return employeeList;
+    }
+
+    public long totalCount() {
+        EntityManager em = emf.createEntityManager();
+        long count = 0;
+        EntityTransaction tx = null;
+        try {
+            tx = em.getTransaction();
+            tx.begin();
+            count = (long) em.createQuery("select count(e.empid) from Employee e").getSingleResult();
+            tx.commit();
+        } catch (RuntimeException e) {
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+            throw e; // or display error message
+        } finally {
+            em.close();
+        }
+        return count;
     }
 
     @Override

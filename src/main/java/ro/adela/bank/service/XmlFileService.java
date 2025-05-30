@@ -5,9 +5,11 @@ import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
 import ro.adela.bank.dto.BankDataDto;
+import ro.adela.bank.dto.InterestRateDto;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class XmlFileService extends AbstractFileService {
 
@@ -33,5 +35,10 @@ public class XmlFileService extends AbstractFileService {
         // output pretty printed
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         jaxbMarshaller.marshal(this.bankDataDto, this.file);
+    }
+
+    @Override
+    public List<InterestRateDto> getInterestByPage(Integer pageNumber, Integer pageSize) {
+        return null;
     }
 }

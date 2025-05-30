@@ -24,6 +24,8 @@ public abstract class AbstractService {
 
     public abstract AmountAccount getBalanceByAccount(Integer accountNumber) throws IOException, JsonProviderException, JAXBException;
 
+    public abstract List<InterestRateDto> getInterestByPage(Integer pageNumber, Integer pageSize);
+
     public abstract void addInterestRate(InterestRateDto interestRate) throws IOException, JsonProviderException, JAXBException;
 
     public abstract void addAccount(BankAccountDto savingsAccount) throws IOException, JsonProviderException, JAXBException;

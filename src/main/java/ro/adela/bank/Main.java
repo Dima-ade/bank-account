@@ -21,6 +21,7 @@ import java.io.InputStreamReader;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Collection;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -60,7 +61,8 @@ public class Main {
                 8 add interest rate to interest rates list
                 9 get interest rate by date
                 10 get sum interests for an account between creatin date and an introduced date
-                11 exit
+                11 get interest rates by pages
+                12 exit
                 """;
         System.out.println(inputMessage);
         // BufferedReader is created in try-with-resources. It will be closed automatically
@@ -83,13 +85,14 @@ public class Main {
                     case "8" -> addInterestRateOption();
                     case "9" -> getInterestRateByDateOption();
                     case "10" -> getTotalInterestRateToDateOption();
-                    case "11" -> "exit";
-                    default -> "Invalid input. Valid input 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 or 'exit' Please try again";
+                    case "11" -> getInterestRatesByPageOption();
+                    case "12" -> "exit";
+                    default -> "Invalid input. Valid input 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 or 'exit' Please try again";
                 };
                 System.out.println("The command is: " + command);
 
                 // do again the cycle if the user input is not "exit"
-            } while (!"11".equals(line));
+            } while (!"12".equals(line));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -429,6 +432,46 @@ public class Main {
             getTotalInterestRateToDateReadObject = null;
         }
         return getTotalInterestRateToDateReadObject;
+    }
+
+    private String getInterestRatesByPageOption() throws IOException, JsonProviderException, JAXBException {
+        GetInterestRatesByPageReadObject getInterestRatesByPageReadObject;
+        do {
+            System.out.println("Enter the details for getting total interest rate for an account from creation till a date!!!");
+            getInterestRatesByPageReadObject = readFromKeyboardGetInterestRatesByPage();
+        }
+        while (getInterestRatesByPageReadObject == null);
+
+        int pageNumber = getInterestRatesByPageReadObject.getPageNumber();
+        int pageSize = getInterestRatesByPageReadObject.getPageSize();
+
+        List<InterestRateDto> interestsByPage = this.repository.getInterestByPage(pageNumber, pageSize);
+
+        for (InterestRateDto interest : interestsByPage) {
+            System.out.println(String.format("Interest  %s", interest.toString()));
+        }
+        return "11";
+    }
+
+    private GetInterestRatesByPageReadObject readFromKeyboardGetInterestRatesByPage() {
+        // Using Scanner for Getting Input from User
+        Scanner s = new Scanner(System.in);
+        GetInterestRatesByPageReadObject getInterestRatesByPageReadObject = new GetInterestRatesByPageReadObject();
+        try{
+            System.out.println("Enter the page number");
+            Integer pageNumber = s.nextInt();
+            System.out.println("The page number you entered is " + pageNumber);
+
+            System.out.println("Enter the page size");
+            Integer pageSize = s.nextInt();
+            System.out.println("The page size you entered is " + pageSize);
+
+            getInterestRatesByPageReadObject.setPageNumber(pageNumber);
+            getInterestRatesByPageReadObject.setPageSize(pageSize);
+        } catch(Exception e) {
+            getInterestRatesByPageReadObject = null;
+        }
+        return getInterestRatesByPageReadObject;
     }
 
 

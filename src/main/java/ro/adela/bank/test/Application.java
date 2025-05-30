@@ -6,6 +6,7 @@ import ro.adela.bank.test.entity.Employee;
 
 import ro.adela.bank.test.repository.EmployeeRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 public class Application {
@@ -17,12 +18,12 @@ public class Application {
         try {
             // Start database
 
-            Employee emp = new Employee();
-            emp.setName("Elon");
+            //Employee emp = new Employee();
+            //emp.setName("Elon");
 
             repository = new EmployeeRepository();
             // Create person
-            repository.save(emp);
+            //repository.save(emp);
 
             // Hibernate generates id of 1
             Optional<Employee> p = repository.findById(1);
@@ -42,12 +43,19 @@ public class Application {
             });
 
             // Delete person
-            repository.delete(p.get());
+            //repository.delete(p.get());
 
             p = repository.findById(1);
 
             log.info("Does employee exist: {}", p.isPresent());
             System.out.println("Does employee exist: " + p.isPresent());
+
+            log.info("Find all employees");
+            int pageNumber = 1;
+            int pageSize = 3;
+            List<Employee> empByPage = repository.findByPage(pageNumber, pageSize);
+            long count = repository.totalCount();
+            log.info("Found");
         } catch (Exception e) {
             log.error("Error occurred in initialization: " + e.getMessage());
             e.printStackTrace();

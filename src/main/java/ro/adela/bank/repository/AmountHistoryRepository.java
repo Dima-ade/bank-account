@@ -7,6 +7,7 @@ import ro.adela.bank.test.entity.Employee;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -58,6 +59,17 @@ public class AmountHistoryRepository extends Repository<AmountHistoryDto, Intege
         return em.createQuery(
                 "SELECT e FROM AmountHistoryDto e ORDER BY e.date DESC")
                 .getResultList();
+    }
+
+    public List<AmountHistoryDto> findByPage(int pageNumber, int pageSize) {
+        EntityManager em = emf.createEntityManager();
+
+        Query query = em.createQuery("From AmountHistoryDto");
+        query.setFirstResult((pageNumber-1) * pageSize);
+        query.setMaxResults(pageSize);
+        List <AmountHistoryDto> amountsHistoryList = query.getResultList();
+
+        return amountsHistoryList;
     }
 
     @Override

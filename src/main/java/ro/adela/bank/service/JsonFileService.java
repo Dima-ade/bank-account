@@ -5,9 +5,11 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import jakarta.xml.bind.JAXBException;
 import ro.adela.bank.dto.BankDataDto;
+import ro.adela.bank.dto.InterestRateDto;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class JsonFileService extends AbstractFileService {
 
@@ -30,5 +32,10 @@ public class JsonFileService extends AbstractFileService {
     @Override
     protected void writeAccounts() throws IOException {
         objectMapper.writeValue(this.file, this.bankDataDto);
+    }
+
+    @Override
+    public List<InterestRateDto> getInterestByPage(Integer pageNumber, Integer pageSize) {
+        return null;
     }
 }
