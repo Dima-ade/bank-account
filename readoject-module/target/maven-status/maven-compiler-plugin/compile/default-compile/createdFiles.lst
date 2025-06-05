@@ -1,0 +1,7 @@
+readobject\GetInterestRateByDateReadObject.class
+readobject\GetInterestRatesByPageReadObject.class
+readobject\CreateAccountReadObject.class
+readobject\FilterAmountsReadObject.class
+readobject\AddInterestRateReadObject.class
+readobject\AddRemoveMoneyReadObject.class
+readobject\GetTotalInterestRateToDateReadObject.class

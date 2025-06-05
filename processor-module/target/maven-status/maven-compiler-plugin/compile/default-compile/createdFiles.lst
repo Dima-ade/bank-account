@@ -1,0 +1,6 @@
+processor\InterestManagerProcessor$1.class
+processor\SavingsAccountProcessor.class
+processor\AmountManagerProcessor$1.class
+processor\InterestManagerProcessor.class
+processor\AmountManagerProcessor.class
+processor\BankAccountProcessor.class

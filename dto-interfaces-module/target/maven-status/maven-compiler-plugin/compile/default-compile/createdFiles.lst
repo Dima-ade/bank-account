@@ -1,0 +1,16 @@
+dto\BankAccountDto$BankAccountDtoBuilder.class
+interfaces\AmountAccount.class
+interfaces\InterestManagerInterface.class
+dto\AmountHistoryDto$AmountHistoryDtoBuilder.class
+dto\BankDataDto.class
+interfaces\AmountManagerInterface.class
+dto\TotalInterestByDayDto.class
+enums\OperationType.class
+dto\InterestRateDto$InterestRateDtoBuilder.class
+dto\BankDataDto$BankDataDtoBuilder.class
+dto\BankAccountDto.class
+utils\EnumUppercaseConverter.class
+dto\TotalInterestByDayDto$TotalInterestByDayDtoBuilder.class
+dto\OutputSummaryAmountDto.class
+dto\AmountHistoryDto.class
+dto\InterestRateDto.class

@@ -3,12 +3,23 @@
   <component name="CompilerConfiguration">
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
-      <profile name="Maven default annotation processors profile" enabled="true">
+      <profile name="Annotation profile for bank-accout" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="bank-accout" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar" />
+        </processorPath>
+        <module name="dto-interfaces-module" />
+        <module name="processor-module" />
+        <module name="imp-module" />
+        <module name="readoject-module" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="dto-module" target="17" />
+      <module name="imodule" target="17" />
+      <module name="main-module" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
