@@ -1,5 +1,3 @@
-package ro.adela.bank;
-
 import dto.BankAccountDto;
 import dto.InterestRateDto;
 import dto.OutputSummaryAmountDto;

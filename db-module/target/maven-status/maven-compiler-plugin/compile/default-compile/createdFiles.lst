@@ -1,0 +1,7 @@
+ro\adela\bank\repository\InterestRateRepository.class
+ro\adela\bank\service\DatabaseService.class
+ro\adela\bank\repository\BankDataRepository.class
+ro\adela\bank\repository\AmountHistoryRepository.class
+ro\adela\bank\repository\Repository$1.class
+ro\adela\bank\repository\BankAccountRepository.class
+ro\adela\bank\repository\Repository.class
