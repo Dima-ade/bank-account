@@ -52,16 +52,4 @@ public class BankAccountDto implements AmountAccount {
     @XmlElement(name = "startDate")
     @JsonProperty("startDate")
     private LocalDate startDate;
-
-    public LocalDate getStartDate(){
-        return this.getStartDate();
-    }
-
-    public String getAccountHolderName() {
-        return this.getAccountHolderName();
-    }
-
-    public double getBalance() {
-        return this.balance;
-    }
 }

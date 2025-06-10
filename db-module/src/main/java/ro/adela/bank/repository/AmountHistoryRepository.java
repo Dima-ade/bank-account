@@ -1,6 +1,7 @@
 package ro.adela.bank.repository;
 
 import dto.AmountHistoryDto;
+import dto.InterestRateDto;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -57,6 +58,12 @@ public class AmountHistoryRepository extends Repository<AmountHistoryDto, Intege
         return em.createQuery(
                 "SELECT e FROM AmountHistoryDto e ORDER BY e.date DESC")
                 .getResultList();
+    }
+
+    public int  totalCount() {
+        EntityManager em = emf.createEntityManager();
+        Object obj = em.createQuery("SELECT count(e) FROM AmountHistoryDto e").getSingleResult();
+        return Integer.parseInt(obj.toString());
     }
 
     public List<AmountHistoryDto> findByPage(int pageNumber, int pageSize) {

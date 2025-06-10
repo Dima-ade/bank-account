@@ -152,6 +152,25 @@ public class DatabaseService extends AbstractService {
     }
 
     @Override
+    protected int readTotalCountForAmountsByMonths() {
+        AmountHistoryRepository repository = new AmountHistoryRepository(emf);
+
+        int totalCount =  repository.totalCount();
+
+        return totalCount;
+    }
+
+    @Override
+    public List<AmountHistoryDto> getAmounts(int pageIndex, int pageSize) {
+        List<AmountHistoryDto> amounts = null;
+
+        AmountHistoryRepository repository = new AmountHistoryRepository(emf);
+        amounts = repository.findByPage(pageIndex + 1, pageSize);
+
+        return amounts;
+    }
+
+    @Override
     public List<InterestRateDto> getInterestByPage(Integer pageNumber, Integer pageSize) {
         List<InterestRateDto> interests = null;
 

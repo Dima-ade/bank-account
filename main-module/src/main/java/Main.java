@@ -444,7 +444,7 @@ public class Main {
         while (getInterestRatesByPageReadObject == null);
 
         int pageNumber = getInterestRatesByPageReadObject.getPageNumber();
-        int pageSize = getInterestRatesByPageReadObject.getPageSize();
+        int pageSize = getInterestRatesByPageReadObject.getPageSize(); ///
 
         List<InterestRateDto> interestsByPage = this.repository.getInterestByPage(pageNumber, pageSize);
 
