@@ -152,7 +152,7 @@ public class DatabaseService extends AbstractService {
     }
 
     @Override
-    protected int readTotalCountForAmountsByMonths() {
+    protected int readTotalCountForAmounts() {
         AmountHistoryRepository repository = new AmountHistoryRepository(emf);
 
         int totalCount =  repository.totalCount();

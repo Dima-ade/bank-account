@@ -15,14 +15,10 @@
         <module name="processor-module" />
         <module name="imp-module" />
         <module name="readoject-module" />
+        <module name="db-module" />
         <module name="main-module" />
         <module name="dto-interfaces-module" />
-        <module name="xml-module (1)" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="dto-module" target="17" />
-      <module name="imodule" target="17" />
-    </bytecodeTargetLevel>
   </component>
 </project>

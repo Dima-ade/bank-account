@@ -35,7 +35,7 @@ public abstract class AbstractFileService extends AbstractService {
     }
 
     @Override
-    protected int readTotalCountForAmountsByMonths() throws JAXBException, IOException {
+    protected int readTotalCountForAmounts() throws JAXBException, IOException {
         return getAmounts().size();
     }
 
