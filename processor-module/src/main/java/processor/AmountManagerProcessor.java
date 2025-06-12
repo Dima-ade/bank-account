@@ -1,7 +1,7 @@
 package processor;
 
-import dto.AmountHistoryDto;
-import dto.TotalInterestByDayDto;
+import ro.adela.bank.AmountHistoryDto;
+import ro.adela.bank.TotalInterestByDayDto;
 import interfaces.AmountManagerInterface;
 import interfaces.InterestManagerInterface;
 

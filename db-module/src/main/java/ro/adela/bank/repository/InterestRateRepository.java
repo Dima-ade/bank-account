@@ -1,16 +1,16 @@
 package ro.adela.bank.repository;
 
-import dto.InterestRateDto;
+import ro.adela.bank.InterestRateDto;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Query;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Query;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-public class InterestRateRepository extends Repository<InterestRateDto, Integer> {
+public class InterestRateRepository extends AbstractRepository<InterestRateDto, Integer> {
 
     public InterestRateRepository(EntityManagerFactory emf) {
         super(emf);

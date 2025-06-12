@@ -1,7 +1,7 @@
 package ro.adela.bank.service;//package ro.adela.bank.service;
 
-import dto.BankDataDto;
-import dto.InterestRateDto;
+import ro.adela.bank.BankDataDto;
+import ro.adela.bank.InterestRateDto;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;

@@ -1,6 +1,6 @@
 package processor;
 
-import dto.BankAccountDto;
+import ro.adela.bank.BankAccountDto;
 
 public class BankAccountProcessor {
     // Attribute for account number

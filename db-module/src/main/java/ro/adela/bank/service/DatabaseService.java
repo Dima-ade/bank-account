@@ -1,14 +1,13 @@
 package ro.adela.bank.service;
 
-import dto.AmountHistoryDto;
-import dto.BankAccountDto;
-import dto.InterestRateDto;
+import ro.adela.bank.AmountHistoryDto;
+import ro.adela.bank.BankAccountDto;
+import ro.adela.bank.InterestRateDto;
 import enums.OperationType;
 import interfaces.AmountAccount;
 import interfaces.AmountManagerInterface;
 import interfaces.InterestManagerInterface;
 import jakarta.xml.bind.JAXBException;
-import org.hibernate.jpa.HibernatePersistenceProvider;
 import processor.AmountManagerProcessor;
 import processor.InterestManagerProcessor;
 import processor.SavingsAccountProcessor;
@@ -16,20 +15,24 @@ import ro.adela.bank.exceptions.JsonProviderException;
 import ro.adela.bank.repository.AmountHistoryRepository;
 import ro.adela.bank.repository.BankAccountRepository;
 import ro.adela.bank.repository.InterestRateRepository;
-import ro.adela.bank.repository.Repository;
+import ro.adela.bank.repository.AbstractRepository;
 
-import javax.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityManagerFactory;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
 public class DatabaseService extends AbstractService {
 
-    public EntityManagerFactory emf;
+    private final EntityManagerFactory emf;
+
+    public DatabaseService(EntityManagerFactory emf) {
+        this.emf = emf;
+
+    }
 
     public DatabaseService() {
-        emf = new HibernatePersistenceProvider()
-                .createContainerEntityManagerFactory(Repository.archiverPersistenceUnitInfo(), Repository.config());
+        emf = AbstractRepository.createEntityManagerFactory();
 
     }
 

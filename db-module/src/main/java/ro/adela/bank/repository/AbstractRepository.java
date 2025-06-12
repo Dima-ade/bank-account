@@ -1,13 +1,15 @@
 package ro.adela.bank.repository;
 
+import jakarta.persistence.SharedCacheMode;
+import jakarta.persistence.ValidationMode;
+import jakarta.persistence.spi.ClassTransformer;
+import jakarta.persistence.spi.PersistenceUnitInfo;
+import jakarta.persistence.spi.PersistenceUnitTransactionType;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.SharedCacheMode;
-import javax.persistence.ValidationMode;
-import javax.persistence.spi.ClassTransformer;
-import javax.persistence.spi.PersistenceUnitInfo;
-import javax.persistence.spi.PersistenceUnitTransactionType;
+import jakarta.persistence.EntityManagerFactory;
+import org.hibernate.jpa.HibernatePersistenceProvider;
+
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -22,7 +24,7 @@ import static org.hibernate.cfg.AvailableSettings.*;
  * @param <T>
  * @param <K>
  */
-public abstract class Repository<T, K> {
+public abstract class AbstractRepository<T, K> {
 
     /*
 		If you want to use `persistence.xml`, just rename `src/main/resources/META-INF/persistence.xml.not_used` and replace EntityManagerFactory as below
@@ -34,12 +36,17 @@ public abstract class Repository<T, K> {
 
     protected final EntityManagerFactory emf;
 
-    protected Repository(EntityManagerFactory emf) {
-        this.emf = emf;
+    protected AbstractRepository() {
+        this.emf = createEntityManagerFactory();
     }
 
-    protected Repository() {
-        this.emf = new HibernatePersistenceProvider().createContainerEntityManagerFactory(archiverPersistenceUnitInfo(), config());
+    public static EntityManagerFactory createEntityManagerFactory() {
+        jakarta.persistence.spi.PersistenceUnitInfo abc =  archiverPersistenceUnitInfo();
+        return new org.hibernate.jpa.HibernatePersistenceProvider().createContainerEntityManagerFactory(abc, config());
+    }
+
+    protected AbstractRepository(EntityManagerFactory emf) {
+        this.emf = emf;
     }
 
     abstract Optional<T> save(T obj);
@@ -79,7 +86,7 @@ public abstract class Repository<T, K> {
         return map;
     }
 
-    public static PersistenceUnitInfo archiverPersistenceUnitInfo() {
+    public static jakarta.persistence.spi.PersistenceUnitInfo archiverPersistenceUnitInfo() {
         return new PersistenceUnitInfo() {
             @Override
             public String getPersistenceUnitName() {
@@ -92,7 +99,7 @@ public abstract class Repository<T, K> {
             }
 
             @Override
-            public PersistenceUnitTransactionType getTransactionType() {
+            public jakarta.persistence.spi.PersistenceUnitTransactionType getTransactionType() {
                 return PersistenceUnitTransactionType.RESOURCE_LOCAL;
             }
 

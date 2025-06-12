@@ -1,6 +1,7 @@
 package utils;
 
-import javax.persistence.AttributeConverter;
+import jakarta.persistence.AttributeConverter;
+
 import java.util.EnumSet;
 
 public class EnumUppercaseConverter<E extends Enum<E>> implements AttributeConverter<E, String> {

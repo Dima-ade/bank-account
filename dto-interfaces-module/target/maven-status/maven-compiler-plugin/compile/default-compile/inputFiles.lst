@@ -1,11 +1,11 @@
 D:\Adela\Java\Java_Workspace\bank-accout\dto-interfaces-module\src\main\java\interfaces\AmountManagerInterface.java
-D:\Adela\Java\Java_Workspace\bank-accout\dto-interfaces-module\src\main\java\dto\InterestRateDto.java
-D:\Adela\Java\Java_Workspace\bank-accout\dto-interfaces-module\src\main\java\dto\TotalInterestByDayDto.java
+D:\Adela\Java\Java_Workspace\bank-accout\dto-interfaces-module\src\main\java\ro\adela\bank\BankAccountDto.java
+D:\Adela\Java\Java_Workspace\bank-accout\dto-interfaces-module\src\main\java\ro\adela\bank\OutputSummaryAmountDto.java
+D:\Adela\Java\Java_Workspace\bank-accout\dto-interfaces-module\src\main\java\ro\adela\bank\BankDataDto.java
+D:\Adela\Java\Java_Workspace\bank-accout\dto-interfaces-module\src\main\java\ro\adela\bank\InterestRateDto.java
 D:\Adela\Java\Java_Workspace\bank-accout\dto-interfaces-module\src\main\java\utils\EnumUppercaseConverter.java
-D:\Adela\Java\Java_Workspace\bank-accout\dto-interfaces-module\src\main\java\dto\AmountHistoryDto.java
-D:\Adela\Java\Java_Workspace\bank-accout\dto-interfaces-module\src\main\java\dto\BankAccountDto.java
 D:\Adela\Java\Java_Workspace\bank-accout\dto-interfaces-module\src\main\java\enums\OperationType.java
-D:\Adela\Java\Java_Workspace\bank-accout\dto-interfaces-module\src\main\java\dto\BankDataDto.java
+D:\Adela\Java\Java_Workspace\bank-accout\dto-interfaces-module\src\main\java\ro\adela\bank\AmountHistoryDto.java
 D:\Adela\Java\Java_Workspace\bank-accout\dto-interfaces-module\src\main\java\interfaces\InterestManagerInterface.java
-D:\Adela\Java\Java_Workspace\bank-accout\dto-interfaces-module\src\main\java\dto\OutputSummaryAmountDto.java
+D:\Adela\Java\Java_Workspace\bank-accout\dto-interfaces-module\src\main\java\ro\adela\bank\TotalInterestByDayDto.java
 D:\Adela\Java\Java_Workspace\bank-accout\dto-interfaces-module\src\main\java\interfaces\AmountAccount.java

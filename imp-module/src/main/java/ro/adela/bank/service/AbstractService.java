@@ -1,9 +1,9 @@
 package ro.adela.bank.service;
 
-import dto.AmountHistoryDto;
-import dto.BankAccountDto;
-import dto.InterestRateDto;
-import dto.OutputSummaryAmountDto;
+import ro.adela.bank.AmountHistoryDto;
+import ro.adela.bank.BankAccountDto;
+import ro.adela.bank.InterestRateDto;
+import ro.adela.bank.OutputSummaryAmountDto;
 import enums.OperationType;
 import interfaces.AmountAccount;
 import interfaces.AmountManagerInterface;

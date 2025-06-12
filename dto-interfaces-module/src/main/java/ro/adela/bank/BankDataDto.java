@@ -1,4 +1,4 @@
-package dto;
+package ro.adela.bank;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.xml.bind.annotation.XmlAccessType;

@@ -1,7 +1,7 @@
-import dto.BankAccountDto;
-import dto.InterestRateDto;
-import dto.OutputSummaryAmountDto;
-import dto.TotalInterestByDayDto;
+import ro.adela.bank.BankAccountDto;
+import ro.adela.bank.InterestRateDto;
+import ro.adela.bank.OutputSummaryAmountDto;
+import ro.adela.bank.TotalInterestByDayDto;
 import interfaces.AmountAccount;
 import interfaces.AmountManagerInterface;
 import interfaces.InterestManagerInterface;

@@ -1,6 +1,6 @@
 package processor;
 
-import dto.InterestRateDto;
+import ro.adela.bank.InterestRateDto;
 import interfaces.InterestManagerInterface;
 
 import java.time.LocalDate;

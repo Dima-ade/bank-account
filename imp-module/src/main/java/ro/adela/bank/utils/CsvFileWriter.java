@@ -1,6 +1,6 @@
 package ro.adela.bank.utils;
 
-import dto.OutputSummaryAmountDto;
+import ro.adela.bank.OutputSummaryAmountDto;
 
 import java.io.FileWriter;
 import java.io.IOException;

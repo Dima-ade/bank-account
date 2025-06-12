@@ -3,8 +3,8 @@ package ro.adela.bank.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import dto.BankDataDto;
-import dto.InterestRateDto;
+import ro.adela.bank.BankDataDto;
+import ro.adela.bank.InterestRateDto;
 import jakarta.xml.bind.JAXBException;
 
 import java.io.File;

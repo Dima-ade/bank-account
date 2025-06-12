@@ -1,15 +1,14 @@
-package dto;
+package ro.adela.bank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import enums.OperationType;
+import jakarta.persistence.*;
 import jakarta.xml.bind.annotation.*;
 import lombok.*;
 import enums.OperationType;
 import utils.EnumUppercaseConverter;
 import utils.EnumUppercaseConverter;
-
-import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 

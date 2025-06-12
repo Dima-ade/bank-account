@@ -1,5 +1,5 @@
 D:\Adela\Java\Java_Workspace\bank-accout\db-module\src\main\java\ro\adela\bank\service\DatabaseService.java
-D:\Adela\Java\Java_Workspace\bank-accout\db-module\src\main\java\ro\adela\bank\repository\Repository.java
+D:\Adela\Java\Java_Workspace\bank-accout\db-module\src\main\java\ro\adela\bank\repository\AbstractRepository.java
 D:\Adela\Java\Java_Workspace\bank-accout\db-module\src\main\java\ro\adela\bank\repository\InterestRateRepository.java
 D:\Adela\Java\Java_Workspace\bank-accout\db-module\src\main\java\ro\adela\bank\repository\BankAccountRepository.java
 D:\Adela\Java\Java_Workspace\bank-accout\db-module\src\main\java\ro\adela\bank\repository\AmountHistoryRepository.java

@@ -1,14 +1,14 @@
 package ro.adela.bank.repository;
 
-import dto.BankDataDto;
+import ro.adela.bank.BankDataDto;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
 import java.util.Objects;
 import java.util.Optional;
 
-public class BankDataRepository extends Repository<BankDataDto, Integer> {
+public class BankDataRepository extends AbstractRepository<BankDataDto, Integer> {
 
     public BankDataRepository(EntityManagerFactory emf) {
         super(emf);
