@@ -1,62 +1,26 @@
 package readobject;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.time.LocalDate;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@Getter
+@Setter
+@NoArgsConstructor
 public class CreateAccountReadObject {
-
     // Attribute for account number
     private Integer accountNumber;
-
     // Attribute for account holder's name
     private String accountHolderName;
-
     // Attribute for account balance
     private double balance;
-
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate birtDate;
-
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate startDate;
-
-    public CreateAccountReadObject() {
-    }
-
-    public Integer getAccountNumber() {
-        return accountNumber;
-    }
-
-    public void setAccountNumber(Integer accountNumber) {
-        this.accountNumber = accountNumber;
-    }
-
-    public String getAccountHolderName() {
-        return accountHolderName;
-    }
-
-    public void setAccountHolderName(String accountHolderName) {
-        this.accountHolderName = accountHolderName;
-    }
-
-    public double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
-
-    public LocalDate getBirtDate() {
-        return birtDate;
-    }
-
-    public void setBirtDate(LocalDate birtDate) {
-        this.birtDate = birtDate;
-    }
-
-    public LocalDate getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
 }

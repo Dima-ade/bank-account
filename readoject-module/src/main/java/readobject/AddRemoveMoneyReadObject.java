@@ -1,39 +1,20 @@
 package readobject;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.time.LocalDate;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@Getter
+@Setter
+@NoArgsConstructor
 public class AddRemoveMoneyReadObject {
-
     private Integer accountNumber;
-
     private double amount;
-
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate operationDate;
-
-    public AddRemoveMoneyReadObject() {
-    }
-
-    public Integer getAccountNumber() {
-        return accountNumber;
-    }
-
-    public void setAccountNumber(Integer accountNumber) {
-        this.accountNumber = accountNumber;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
-    public LocalDate getOperationDate() {
-        return operationDate;
-    }
-
-    public void setOperationDate(LocalDate operationDate) {
-        this.operationDate = operationDate;
-    }
 }
