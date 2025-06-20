@@ -1,20 +1,18 @@
 package readobject;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.time.LocalDate;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@Getter
+@Setter
+@NoArgsConstructor
 public class GetInterestRateByDateReadObject {
-
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate providedDate;
-
-    //Default constructor
-    public GetInterestRateByDateReadObject() {
-    }
-
-    public LocalDate getProvidedDate() {
-        return providedDate;
-    }
-
-    public void setProvidedDate(LocalDate providedDate) {
-        this.providedDate = providedDate;
-    }
 }
