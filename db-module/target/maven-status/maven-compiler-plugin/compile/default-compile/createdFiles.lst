@@ -1,7 +1,14 @@
 ro\adela\bank\repository\InterestRateRepository.class
 ro\adela\bank\service\DatabaseService.class
+ro\adela\bank\jpa\repository\JpaInterestRateRepository.class
+ro\adela\bank\service\JpaDatabaseService.class
+ro\adela\bank\service\AbstractDatabaseService.class
+ro\adela\bank\service\PersistenceManager.class
 ro\adela\bank\repository\BankDataRepository.class
 ro\adela\bank\repository\AbstractRepository$1.class
 ro\adela\bank\repository\AmountHistoryRepository.class
+ro\adela\bank\jpa\repository\JpaBankDataRepository.class
+ro\adela\bank\jpa\repository\JpaBankAccountRepository.class
+ro\adela\bank\jpa\repository\JpaAmountHistoryRepository.class
 ro\adela\bank\repository\AbstractRepository.class
 ro\adela\bank\repository\BankAccountRepository.class

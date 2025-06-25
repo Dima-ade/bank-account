@@ -5,15 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b6e7ce1-aa45-4e56-847e-84ef87ab362f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/jpa/repository/JpaAmountHistoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/jpa/repository/JpaBankAccountRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/jpa/repository/JpaBankDataRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/jpa/repository/JpaInterestRateRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/service/JpaDatabaseService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/service/PersistenceManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/service/AbstractDatabaseService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imp-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/imp-module/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main-module/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/main-module/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/jpa/repository/JpaAmountHistoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/jpa/repository/JpaAmountHistoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/jpa/repository/JpaInterestRateRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/jpa/repository/JpaInterestRateRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/service/DatabaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/service/DatabaseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/service/JpaDatabaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/service/JpaDatabaseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db-module/target/classes/ro/adela/bank/service/DatabaseService.class" beforeDir="false" afterPath="$PROJECT_DIR$/db-module/target/classes/ro/adela/bank/service/DatabaseService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db-module/target/db-module-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/db-module/target/db-module-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db-module/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/db-module/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db-module/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/db-module/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/dto-interfaces-module-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/dto-interfaces-module/target/dto-interfaces-module-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imp-module/target/imp-module-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/imp-module/target/imp-module-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/json-module/target/json-module-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/json-module/target/json-module-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/processor-module/target/processor-module-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/processor-module/target/processor-module-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readoject-module/target/readoject-module-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/readoject-module/target/readoject-module-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,9 +69,9 @@
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn clean deploy" />
-      <command value="mvn clean install" />
       <command value="mvn clean" />
       <command value="mvn install" />
+      <command value="mvn clean install" />
     </option>
   </component>
   <component name="RunManager">
@@ -116,16 +122,6 @@
           <url>file://$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/repository/BankAccountRepository.java</url>
           <line>15</line>
           <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/service/DatabaseService.java</url>
-          <line>29</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/service/DatabaseService.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/repository/AbstractRepository.java</url>
