@@ -5,12 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b6e7ce1-aa45-4e56-847e-84ef87ab362f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/readoject-module/src/main/java/readobject/GetInterestRateByDateReadObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/readoject-module/src/main/java/readobject/GetInterestRateByDateReadObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/jpa/repository/JpaAmountHistoryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/jpa/repository/JpaBankAccountRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/jpa/repository/JpaBankDataRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/jpa/repository/JpaInterestRateRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/service/JpaDatabaseService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/service/PersistenceManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imp-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/imp-module/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main-module/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/main-module/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -39,11 +55,17 @@
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ro.adela.bank.service" />
+    </key>
+  </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn clean deploy" />
-      <command value="mvn clean" />
       <command value="mvn clean install" />
+      <command value="mvn clean" />
+      <command value="mvn install" />
     </option>
   </component>
   <component name="RunManager">

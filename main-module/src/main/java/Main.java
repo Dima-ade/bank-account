@@ -369,6 +369,7 @@ public class Main {
         double interestRate = this.repository.getInterestManagerProcessor().getInterestByDate(interestRateByDateReadObject.getProvidedDate());
         System.out.println("The interest rate for the provided date " + interestRateByDateReadObject.getProvidedDate() + " is: " + interestRate);
 
+
         return "9";
     }
 
