@@ -25,6 +25,7 @@ import java.time.LocalDate;
 public class AmountHistoryDto implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id")
     @JsonIgnore
     @XmlTransient
     private Integer id;

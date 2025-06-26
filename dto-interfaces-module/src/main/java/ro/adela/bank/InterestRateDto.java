@@ -20,6 +20,7 @@ public class InterestRateDto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id")
     @JsonIgnore
     @XmlTransient
     private Integer id;

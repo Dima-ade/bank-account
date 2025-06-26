@@ -4,7 +4,6 @@ D:\Adela\Java\Java_Workspace\bank-accout\db-module\src\main\java\ro\adela\bank\r
 D:\Adela\Java\Java_Workspace\bank-accout\db-module\src\main\java\ro\adela\bank\service\JpaDatabaseService.java
 D:\Adela\Java\Java_Workspace\bank-accout\db-module\src\main\java\ro\adela\bank\service\PersistenceManager.java
 D:\Adela\Java\Java_Workspace\bank-accout\db-module\src\main\java\ro\adela\bank\repository\InterestRateRepository.java
-D:\Adela\Java\Java_Workspace\bank-accout\db-module\src\main\java\ro\adela\bank\jpa\repository\JpaBankDataRepository.java
 D:\Adela\Java\Java_Workspace\bank-accout\db-module\src\main\java\ro\adela\bank\repository\BankAccountRepository.java
 D:\Adela\Java\Java_Workspace\bank-accout\db-module\src\main\java\ro\adela\bank\jpa\repository\JpaBankAccountRepository.java
 D:\Adela\Java\Java_Workspace\bank-accout\db-module\src\main\java\ro\adela\bank\jpa\repository\JpaInterestRateRepository.java

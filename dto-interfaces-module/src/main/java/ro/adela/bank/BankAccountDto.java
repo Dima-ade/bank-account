@@ -27,6 +27,7 @@ public class BankAccountDto implements AmountAccount {
 
     // Attribute for account number
     @Id
+    @Column(name = "accountNumber")
     @XmlElement(name = "accountNumber")
     @JsonProperty("accountNumber")
     private Integer accountNumber;
