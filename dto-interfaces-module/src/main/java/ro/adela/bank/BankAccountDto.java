@@ -27,13 +27,13 @@ public class BankAccountDto implements AmountAccount {
 
     // Attribute for account number
     @Id
-    @Column(name = "accountNumber")
+    @Column(name = "accountnumber")
     @XmlElement(name = "accountNumber")
     @JsonProperty("accountNumber")
     private Integer accountNumber;
 
     // Attribute for account holder's name
-    @Column(name = "accountHolderName")
+    @Column(name = "accountholdername")
     @XmlElement(name = "accountHolderName")
     @JsonProperty("accountHolderName")
     private String accountHolderName;
@@ -44,12 +44,12 @@ public class BankAccountDto implements AmountAccount {
     @JsonProperty("balance")
     private double balance;
 
-    @Column(name = "birtDate")
+    @Column(name = "birtdate")
     @XmlElement(name = "birtDate")
     @JsonProperty("birtDate")
     private LocalDate birtDate;
 
-    @Column(name = "startDate")
+    @Column(name = "startdate")
     @XmlElement(name = "startDate")
     @JsonProperty("startDate")
     private LocalDate startDate;

@@ -30,12 +30,12 @@ public class AmountHistoryDto implements Serializable {
     @XmlTransient
     private Integer id;
 
-    @Column(name = "accountNumber")
+    @Column(name = "accountnumber")
     @XmlElement(name = "accountNumber")
     @JsonProperty("accountNumber")
     private Integer accountNumber;
 
-    @Column(name = "operationType")
+    @Column(name = "operationtype")
     @Enumerated(EnumType.STRING)
     @Convert(converter = EnumUppercaseConverter.class)
     @XmlElement(name = "operationType")
@@ -52,7 +52,7 @@ public class AmountHistoryDto implements Serializable {
     @JsonProperty("amount")
     private double amount;
 
-    @Column(name = "currentBalance")
+    @Column(name = "currentbalance")
     @XmlElement(name = "currentBalance")
     @JsonProperty("currentBalance")
     private double currentBalance;

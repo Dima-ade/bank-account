@@ -26,12 +26,12 @@ public class InterestRateDto {
     private Integer id;
 
     // Attribute for interest rate
-    @Column(name = "interestRate")
+    @Column(name = "interestrate")
     @XmlElement(name = "interestRate")
     @JsonProperty("interestRate")
     private double interestRate;
 
-    @Column(name = "activationDate")
+    @Column(name = "activationdate")
     @XmlElement(name = "activationDate")
     @JsonProperty("activationDate")
     private LocalDate activationDate;
