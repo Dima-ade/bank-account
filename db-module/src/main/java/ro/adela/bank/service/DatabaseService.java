@@ -48,8 +48,8 @@ public class DatabaseService extends AbstractDatabaseService {
         return bankAccountRepository.findById(accountNumber).get();
     }
 
-    protected void saveAccountByNumber(BankAccountDto emp) {
-        bankAccountRepository.save(emp);
+    protected void saveAccount(BankAccountDto savingsAccount) {
+        bankAccountRepository.save(savingsAccount);
     }
 
     protected void saveAmountHistory(AmountHistoryDto emp) {

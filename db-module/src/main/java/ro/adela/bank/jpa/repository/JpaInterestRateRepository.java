@@ -12,7 +12,7 @@ import ro.adela.bank.repository.AbstractRepository;
 import java.util.List;
 
 @Repository
-public interface JpaInterestRateRepository extends PagingAndSortingRepository<InterestRateDto, Integer> {
+public interface JpaInterestRateRepository extends PagingAndSortingRepository<InterestRateDto, Integer>, JpaRepository<InterestRateDto, Integer> {
 
     Page<InterestRateDto> findAllById(Integer id, Pageable pageable);
 }

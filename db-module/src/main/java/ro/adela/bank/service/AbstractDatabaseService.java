@@ -37,6 +37,8 @@ public abstract class AbstractDatabaseService extends AbstractService {
 
     }
 
+    protected abstract void saveAccount(BankAccountDto savingsAccount);
+
     @Override
     public void addAccount(BankAccountDto savingsAccount) {
 
@@ -44,20 +46,14 @@ public abstract class AbstractDatabaseService extends AbstractService {
             throw new IllegalArgumentException("The savingsAccount is null");
         }
 
-        BankAccountRepository repository = new BankAccountRepository(emf);
-            // Create person
-        repository.save(savingsAccount);
+        // Create person
+        saveAccount(savingsAccount);
     }
 
-    protected BankAccountDto findAccountByNumber(Integer accountNumber) {
-        return null;
-    }
+    protected abstract BankAccountDto findAccountByNumber(Integer accountNumber);
 
-    protected void saveAccountByNumber(BankAccountDto emp) {
-    }
 
-    protected void saveAmountHistory(AmountHistoryDto emp) {
-    }
+    protected abstract void saveAmountHistory(AmountHistoryDto emp);
 
 
         @Override
@@ -75,7 +71,7 @@ public abstract class AbstractDatabaseService extends AbstractService {
                 SavingsAccountProcessor savingsAccountProcessor = new SavingsAccountProcessor(account);
                 savingsAccountProcessor.deposit(amount);
 
-                saveAccountByNumber(savingsAccountProcessor.getSavingsAccountDto());
+                saveAccount(savingsAccountProcessor.getSavingsAccountDto());
 
                 double currentBalance = savingsAccountProcessor.getSavingsAccountDto().getBalance();
                 AmountHistoryDto amountHistory = createHistory(amount, accountNumber, operationDateFormatted, OperationType.DEPOSIT, currentBalance);
@@ -100,7 +96,7 @@ public abstract class AbstractDatabaseService extends AbstractService {
                 SavingsAccountProcessor savingsAccountProcessor = new SavingsAccountProcessor(account);
                 savingsAccountProcessor.withdraw(amount);
 
-                saveAccountByNumber(savingsAccountProcessor.getSavingsAccountDto());
+                saveAccount(savingsAccountProcessor.getSavingsAccountDto());
 
                 double currentBalance = savingsAccountProcessor.getSavingsAccountDto().getBalance();
 
@@ -112,8 +108,7 @@ public abstract class AbstractDatabaseService extends AbstractService {
         return account;
     }
 
-    protected void saveInterestRate(InterestRateDto interestRate) {
-    }
+    protected abstract void saveInterestRate(InterestRateDto interestRate);
 
     @Override
     public void addInterestRate(InterestRateDto interestRate) {
@@ -124,9 +119,7 @@ public abstract class AbstractDatabaseService extends AbstractService {
         saveInterestRate(interestRate);
     }
 
-    protected List<InterestRateDto> findAllInterestRate() {
-        return null;
-    }
+    protected abstract List<InterestRateDto> findAllInterestRate();
 
     private List<InterestRateDto> getInterests() {
         List<InterestRateDto> interestRates = findAllInterestRate();
@@ -139,9 +132,7 @@ public abstract class AbstractDatabaseService extends AbstractService {
         return new InterestManagerProcessor(getInterests());
     }
 
-    protected List<AmountHistoryDto> findAllAmounts() {
-        return null;
-    }
+    protected abstract List<AmountHistoryDto> findAllAmounts();
 
     @Override
     public final List<AmountHistoryDto> getAmounts() {
@@ -167,9 +158,7 @@ public abstract class AbstractDatabaseService extends AbstractService {
         return account;
     }
 
-    protected Integer amountTotalCount() {
-        return null;
-    }
+    protected abstract Integer amountTotalCount();
 
     @Override
     protected int readTotalCountForAmounts() {
@@ -178,14 +167,7 @@ public abstract class AbstractDatabaseService extends AbstractService {
         return totalCount;
     }
 
-    protected List<AmountHistoryDto> getAmountsByPage(int pageIndex, int pageSize) {
-        return null;
-
-        // todo Adela: pt JPA:
-        //Pageable firstPageWithTwoElements = PageRequest.of(pageIndex + 1, pageSize);
-//        List<Product> allTenDollarProducts =
-//                productRepository.findAllByPrice(10, secondPageWithFiveElements);
-    }
+    protected abstract List<AmountHistoryDto> getAmountsByPage(int pageIndex, int pageSize);
 
     @Override
     public List<AmountHistoryDto> getAmounts(int pageIndex, int pageSize) {
@@ -194,10 +176,7 @@ public abstract class AbstractDatabaseService extends AbstractService {
         return amounts;
     }
 
-    protected List<InterestRateDto> getInterestByPageInRepository(Integer pageNumber, Integer pageSize) {
-        return null;
-    }
-
+    protected abstract List<InterestRateDto> getInterestByPageInRepository(Integer pageNumber, Integer pageSize);
     @Override
     public List<InterestRateDto> getInterestByPage(Integer pageNumber, Integer pageSize) {
         List<InterestRateDto> interests = getInterestByPageInRepository(pageNumber, pageSize);
