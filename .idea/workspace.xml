@@ -5,11 +5,47 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b6e7ce1-aa45-4e56-847e-84ef87ab362f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/db-module/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db-module/target/db-module-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/db-module/target/db-module-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dto-interfaces-module/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/dto-interfaces-module-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/dto-interfaces-module/target/dto-interfaces-module-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/src/main/java/enums/OperationType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/src/main/java/interfaces/AmountAccount.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/src/main/java/interfaces/AmountManagerInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/src/main/java/interfaces/InterestManagerInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/src/main/java/ro/adela/bank/AmountHistoryDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/src/main/java/ro/adela/bank/BankAccountDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/src/main/java/ro/adela/bank/BankDataDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/src/main/java/ro/adela/bank/InterestRateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/src/main/java/ro/adela/bank/OutputSummaryAmountDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/src/main/java/ro/adela/bank/TotalInterestByDayDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/src/main/java/utils/EnumUppercaseConverter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/src/main/resources/lombok.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/enums/OperationType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/interfaces/AmountAccount.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/interfaces/AmountManagerInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/interfaces/InterestManagerInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/lombok.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/ro/adela/bank/AmountHistoryDto$AmountHistoryDtoBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/ro/adela/bank/AmountHistoryDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/ro/adela/bank/BankAccountDto$BankAccountDtoBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/ro/adela/bank/BankAccountDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/ro/adela/bank/BankDataDto$BankDataDtoBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/ro/adela/bank/BankDataDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/ro/adela/bank/InterestRateDto$InterestRateDtoBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/ro/adela/bank/InterestRateDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/ro/adela/bank/OutputSummaryAmountDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/ro/adela/bank/TotalInterestByDayDto$TotalInterestByDayDtoBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/ro/adela/bank/TotalInterestByDayDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/utils/EnumUppercaseConverter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/dto-interfaces-module-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/imp-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/imp-module/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imp-module/target/imp-module-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/imp-module/target/imp-module-1.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/json-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/json-module/pom.xml" afterDir="false" />
@@ -21,6 +57,7 @@
       <change beforePath="$PROJECT_DIR$/processor-module/target/processor-module-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/processor-module/target/processor-module-1.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readoject-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/readoject-module/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readoject-module/target/readoject-module-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/readoject-module/target/readoject-module-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/xml-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/xml-module/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xml-module/target/xml-module-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/xml-module/target/xml-module-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>

@@ -3,7 +3,7 @@
   <component name="CompilerConfiguration">
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
-      <profile name="Annotation profile for bank-accout" enabled="true">
+      <profile name="Annotation profile for bank-accounts" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -13,12 +13,16 @@
         <module name="json-module" />
         <module name="xml-module" />
         <module name="processor-module" />
+        <module name="data-model" />
         <module name="imp-module" />
         <module name="readoject-module" />
         <module name="db-module" />
         <module name="main-module" />
-        <module name="dto-interfaces-module" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="bank-accout" target="15" />
+      <module name="dto-interfaces-module" target="15" />
+    </bytecodeTargetLevel>
   </component>
 </project>

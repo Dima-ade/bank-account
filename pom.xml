@@ -6,13 +6,13 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ro.adela</groupId>
-    <artifactId>bank-accout</artifactId>
+    <groupId>ro.adela.bank.accounts</groupId>
+    <artifactId>bank-accounts</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>dto-interfaces-module</module>
+        <module>data-model</module>
         <module>imp-module</module>
         <module>processor-module</module>
         <module>readoject-module</module>
