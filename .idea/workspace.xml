@@ -6,8 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="2b6e7ce1-aa45-4e56-847e-84ef87ab362f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/service/JpaDatabaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/service/JpaDatabaseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/db-module/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db-module/target/db-module-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/db-module/target/db-module-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dto-interfaces-module/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/dto-interfaces-module-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/dto-interfaces-module/target/dto-interfaces-module-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imp-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/imp-module/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imp-module/target/imp-module-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/imp-module/target/imp-module-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/json-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/json-module/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/json-module/target/json-module-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/json-module/target/json-module-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main-module/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main-module/target/main-module-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/main-module/target/main-module-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/processor-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/processor-module/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/processor-module/target/processor-module-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/processor-module/target/processor-module-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readoject-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/readoject-module/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readoject-module/target/readoject-module-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/readoject-module/target/readoject-module-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/xml-module/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml-module/target/xml-module-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/xml-module/target/xml-module-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
