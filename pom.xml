@@ -13,13 +13,12 @@
 
     <modules>
         <module>data-model</module>
-        <module>imp-module</module>
         <module>processor-module</module>
-        <module>readoject-module</module>
+        <module>console-inputs</module>
         <module>json-module</module>
         <module>db-module</module>
         <module>xml-module</module>
-        <module>main-module</module>
+        <module>application</module>
     </modules>
 
     <properties>

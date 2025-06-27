@@ -6,58 +6,67 @@
   <component name="ChangeListManager">
     <list default="true" id="2b6e7ce1-aa45-4e56-847e-84ef87ab362f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-model/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/data-model/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-model/target/data-model-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/data-model/target/data-model-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-model/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/data-model/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/db-module/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/service/AbstractDatabaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/service/AbstractDatabaseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/service/DatabaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/service/DatabaseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/service/JpaDatabaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/service/JpaDatabaseService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db-module/target/db-module-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/db-module/target/db-module-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/src/main/java/enums/OperationType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/src/main/java/interfaces/AmountAccount.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/src/main/java/interfaces/AmountManagerInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/src/main/java/interfaces/InterestManagerInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/src/main/java/ro/adela/bank/AmountHistoryDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/src/main/java/ro/adela/bank/BankAccountDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/src/main/java/ro/adela/bank/BankDataDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/src/main/java/ro/adela/bank/InterestRateDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/src/main/java/ro/adela/bank/OutputSummaryAmountDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/src/main/java/ro/adela/bank/TotalInterestByDayDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/src/main/java/utils/EnumUppercaseConverter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/src/main/resources/lombok.config" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/enums/OperationType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/interfaces/AmountAccount.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/interfaces/AmountManagerInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/interfaces/InterestManagerInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/lombok.config" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/ro/adela/bank/AmountHistoryDto$AmountHistoryDtoBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/ro/adela/bank/AmountHistoryDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/ro/adela/bank/BankAccountDto$BankAccountDtoBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/ro/adela/bank/BankAccountDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/ro/adela/bank/BankDataDto$BankDataDtoBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/ro/adela/bank/BankDataDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/ro/adela/bank/InterestRateDto$InterestRateDtoBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/ro/adela/bank/InterestRateDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/ro/adela/bank/OutputSummaryAmountDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/ro/adela/bank/TotalInterestByDayDto$TotalInterestByDayDtoBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/ro/adela/bank/TotalInterestByDayDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/classes/utils/EnumUppercaseConverter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/dto-interfaces-module-1.0-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto-interfaces-module/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imp-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/imp-module/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imp-module/target/imp-module-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/imp-module/target/imp-module-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imp-module/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imp-module/src/main/java/ro/adela/bank/exceptions/JsonProviderException.java" beforeDir="false" afterPath="$PROJECT_DIR$/processor-module/src/main/java/ro/adela/bank/exceptions/JsonProviderException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imp-module/src/main/java/ro/adela/bank/service/AbstractFileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/processor-module/src/main/java/ro/adela/bank/service/AbstractFileService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imp-module/src/main/java/ro/adela/bank/service/AbstractService.java" beforeDir="false" afterPath="$PROJECT_DIR$/processor-module/src/main/java/ro/adela/bank/service/AbstractService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imp-module/src/main/java/ro/adela/bank/utils/CsvFileWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/processor-module/src/main/java/ro/adela/bank/utils/CsvFileWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imp-module/src/main/java/ro/adela/bank/utils/StringUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/processor-module/src/main/java/ro/adela/bank/utils/StringUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imp-module/target/classes/ro/adela/bank/exceptions/JsonProviderException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imp-module/target/classes/ro/adela/bank/service/AbstractFileService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imp-module/target/classes/ro/adela/bank/service/AbstractService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imp-module/target/classes/ro/adela/bank/utils/CsvFileWriter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imp-module/target/classes/ro/adela/bank/utils/StringUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imp-module/target/imp-module-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imp-module/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imp-module/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imp-module/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imp-module/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imp-module/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/json-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/json-module/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/json-module/target/json-module-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/json-module/target/json-module-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main-module/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main-module/target/main-module-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/main-module/target/main-module-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main-module/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main-module/src/main/java/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main-module/target/classes/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main-module/target/main-module-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main-module/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main-module/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main-module/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main-module/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main-module/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/processor-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/processor-module/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/processor-module/target/processor-module-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/processor-module/target/processor-module-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readoject-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/readoject-module/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readoject-module/target/readoject-module-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/readoject-module/target/readoject-module-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readoject-module/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readoject-module/src/main/java/readobject/AddInterestRateReadObject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readoject-module/src/main/java/readobject/AddRemoveMoneyReadObject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readoject-module/src/main/java/readobject/CreateAccountReadObject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readoject-module/src/main/java/readobject/FilterAmountsReadObject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readoject-module/src/main/java/readobject/GetInterestRateByDateReadObject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readoject-module/src/main/java/readobject/GetInterestRatesByPageReadObject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readoject-module/src/main/java/readobject/GetTotalInterestRateToDateReadObject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readoject-module/target/classes/readobject/AddInterestRateReadObject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readoject-module/target/classes/readobject/AddRemoveMoneyReadObject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readoject-module/target/classes/readobject/CreateAccountReadObject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readoject-module/target/classes/readobject/FilterAmountsReadObject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readoject-module/target/classes/readobject/GetInterestRateByDateReadObject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readoject-module/target/classes/readobject/GetInterestRatesByPageReadObject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readoject-module/target/classes/readobject/GetTotalInterestRateToDateReadObject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readoject-module/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readoject-module/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readoject-module/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readoject-module/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readoject-module/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readoject-module/target/readoject-module-1.0-SNAPSHOT.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/xml-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/xml-module/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xml-module/target/xml-module-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/xml-module/target/xml-module-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
@@ -90,17 +99,18 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/Adela/Java/Java_Workspace/bank-accout/processor-module/src/main/java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="ro.adela.bank.service" />
@@ -117,7 +127,6 @@
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="main-module" />
       <option name="PROGRAM_PARAMETERS" value="&quot;db&quot;" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -180,11 +189,11 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/db-module/src/main/java/ro/adela/bank/service/DatabaseService.java</url>
-          <line>55</line>
+          <line>44</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/imp-module/src/main/java/ro/adela/bank/service/AbstractService.java</url>
+          <url>file://$PROJECT_DIR$/processor-module/src/main/java/ro/adela/bank/service/AbstractService.java</url>
           <line>75</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>

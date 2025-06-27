@@ -1,6 +1,11 @@
+processor\AmountManagerProcessor$1.class
+ro\adela\bank\service\AbstractService.class
+ro\adela\bank\utils\CsvFileWriter.class
+processor\InterestManagerProcessor.class
+processor\BankAccountProcessor.class
 processor\InterestManagerProcessor$1.class
 processor\SavingsAccountProcessor.class
-processor\AmountManagerProcessor$1.class
-processor\InterestManagerProcessor.class
+ro\adela\bank\exceptions\JsonProviderException.class
+ro\adela\bank\service\AbstractFileService.class
 processor\AmountManagerProcessor.class
-processor\BankAccountProcessor.class
+ro\adela\bank\utils\StringUtils.class

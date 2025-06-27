@@ -14,9 +14,6 @@ import ro.adela.bank.BankAccountDto;
 import ro.adela.bank.InterestRateDto;
 import ro.adela.bank.exceptions.JsonProviderException;
 import ro.adela.bank.repository.AbstractRepository;
-import ro.adela.bank.repository.AmountHistoryRepository;
-import ro.adela.bank.repository.BankAccountRepository;
-import ro.adela.bank.repository.InterestRateRepository;
 
 import java.io.IOException;
 import java.time.LocalDate;

@@ -12,17 +12,19 @@
         </processorPath>
         <module name="json-module" />
         <module name="xml-module" />
+        <module name="application" />
+        <module name="console-inputs" />
         <module name="processor-module" />
         <module name="data-model" />
-        <module name="imp-module" />
-        <module name="readoject-module" />
         <module name="db-module" />
-        <module name="main-module" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="bank-accout" target="15" />
       <module name="dto-interfaces-module" target="15" />
+      <module name="imp-module" target="15" />
+      <module name="main-module" target="15" />
+      <module name="readoject-module" target="15" />
     </bytecodeTargetLevel>
   </component>
 </project>

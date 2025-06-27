@@ -9,15 +9,24 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <artifactId>application</artifactId>
     <groupId>ro.adela.bank.accounts</groupId>
-    <artifactId>db-module</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
             <groupId>ro.adela</groupId>
-            <artifactId>imp-module</artifactId>
+            <artifactId>json-module</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>ro.adela</groupId>
+            <artifactId>xml-module</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>ro.adela</groupId>
+            <artifactId>db-module</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
