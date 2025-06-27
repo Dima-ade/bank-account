@@ -84,7 +84,7 @@ public class JpaDatabaseService extends AbstractDatabaseService {
     protected List<AmountHistoryDto> getAmountsByPage(int pageIndex, int pageSize) {
         JpaAmountHistoryRepository amountHistoryRepository = this.persistenceManager.getJpaAmountHistoryRepository();
 
-        Pageable pagesWithSizeElements = PageRequest.of(pageIndex + 1, pageSize);
+        Pageable pagesWithSizeElements = PageRequest.of(pageIndex, pageSize);
         Page<AmountHistoryDto> amountsInPage = amountHistoryRepository.findAll(pagesWithSizeElements);
 
         return amountsInPage.getContent();
@@ -94,7 +94,7 @@ public class JpaDatabaseService extends AbstractDatabaseService {
     protected List<InterestRateDto> getInterestByPageInRepository(Integer pageNumber, Integer pageSize) {
         JpaInterestRateRepository interestRateRepository = this.persistenceManager.getJpaInterestRateRepository();
 
-        Pageable pagesWithSizeElements = PageRequest.of(pageNumber + 1, pageSize);
+        Pageable pagesWithSizeElements = PageRequest.of(pageNumber, pageSize);
         Page<InterestRateDto> interestRatesInPage = interestRateRepository.findAll(pagesWithSizeElements);
 
         return interestRatesInPage.getContent();
